@@ -9,8 +9,10 @@
 class Admin_Cookie_Wall {
 	public function __construct() {
 		if( isset( $_GET['page'] ) ) {
-			if( $_GET['page'] == 'll-cookie-wall-settings' && isset( $_POST['llcw_submit'] ) ) {
-				$this->save_settings();
+			if( $_GET['page'] == 'll-cookie-wall-settings' ) {
+				if ( isset( $_POST['llcw_submit'] ) ) {
+					$this->save_settings();
+				}
 			}
 		}
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
@@ -39,6 +41,10 @@ class Admin_Cookie_Wall {
 		if( isset( $_POST['llcw_btn_text'] ) ) {
 			$settings['button_text'] = $_POST['llcw_btn_text'];
 		}
+		if( isset( $_POST['llcw_url'] ) ) {
+			$settings['page_url'] = $_POST['llcw_url'];
+		}
 		update_option( 'llcw_settings', $settings );
 	}
 }
+

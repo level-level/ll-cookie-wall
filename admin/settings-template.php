@@ -6,11 +6,12 @@
  * Time: 10:16
  */
 
-$cookie_wall_options = get_option( 'llcw_settings' );
-$description    = '';
-$expiration     = '';
-$title          = '';
-$button_text    = '';
+$cookie_wall_options    = get_option( 'llcw_settings' );
+$description            = '';
+$expiration             = '';
+$title                  = '';
+$button_text            = '';
+$page_url               = '';
 
 if( isset( $cookie_wall_options['description'] ) ) {
 	$description = $cookie_wall_options['description'];
@@ -23,6 +24,9 @@ if( isset( $cookie_wall_options['title'] ) ) {
 }
 if( isset( $cookie_wall_options['button_text'] ) ) {
 	$button_text = $cookie_wall_options['button_text'];
+}
+if( isset( $cookie_wall_options['page_url'] ) ) {
+	$page_url = $cookie_wall_options['page_url'];
 }
 
 
@@ -47,6 +51,10 @@ if( isset( $cookie_wall_options['button_text'] ) ) {
 		<p>
 			<label>Agree button text</label><br>
 			<input type="text" name="llcw_btn_text" value="<?php echo $button_text; ?>" />
+		</p>
+		<p>
+			<label>More info page URL</label><br>
+			<input type="text" name="llcw_url" value="<?php echo $page_url; ?>" />
 		</p>
 		<p>
 			<input type="submit" name="llcw_submit" value="Opslaan" />
