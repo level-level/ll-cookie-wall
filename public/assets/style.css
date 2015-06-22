@@ -1,0 +1,12 @@
+body.ll_cookie_wall {
+    background: #f1f1f1;
+}
+body.ll_cookie_wall main {
+    background: white;
+    max-width: 1024px;
+    position: relative;
+    margin: 0 auto;
+}
+body.ll_cookie_wall main section {
+    padding: 20px;
+}
