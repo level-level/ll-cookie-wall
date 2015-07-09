@@ -19,10 +19,21 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					<a href="<?php echo $page_url; ?>">Lees meer</a>
 				<?php } ?>
 				<form>
-					<input type="hidden" name="llcw_cookie_agreement" value="accept" />
-					<input class="btn-accept" type="submit" value="<?php echo $button_text; ?>" />
+					<input class="btn-accept" id="agree_with_cookie_terms" value="<?php echo $button_text; ?>" />
 				</form>
 			</section>
 		</main>
+		<footer>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script type="text/javascript" src="<?php echo plugin_dir_url( __FILE__ ); ?>assets/jquery.cookie.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#agree_with_cookie_terms').click(function(e) {
+						e.preventDefault();
+						$.cookie( 'LLCW', 'll_cookie_wall', { expires: 365, path: '/' } );
+					});
+				});
+			</script>
+		</footer>
 	</body>
 <?php }

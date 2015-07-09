@@ -36,6 +36,7 @@ body.ll_cookie_wall main section .btn-accept {
     border: none;
     padding: 10px;
     color: white;
+    width: auto;
     font-size: 16px;
     cursor: pointer;
     -webkit-border-radius: 6px;
