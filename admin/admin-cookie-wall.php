@@ -26,6 +26,9 @@ class Admin_Cookie_Wall {
 		if( isset( $_POST['llcw_description'] ) ) {
 			$settings['description'] = $_POST['llcw_description'];
 		}
+		if( isset( $_POST['image_url'] ) ) {
+			$settings['image_url'] = $_POST['image_url'];
+		}
 		if( isset( $_POST['llcw_expiration'] ) ) {
 			$settings['expiration'] = $_POST['llcw_expiration'];
 		}

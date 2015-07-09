@@ -22,12 +22,19 @@ if( isset( $cookie_wall_options['button_text'] ) ) {
 if( isset( $cookie_wall_options['page_url'] ) ) {
 	$page_url = $cookie_wall_options['page_url'];
 }
+if( isset( $cookie_wall_options['image_url'] ) ) {
+	$image_url = $cookie_wall_options['image_url'];
+}
 
-
+// jQuery
+wp_enqueue_script('jquery');
+// This will enqueue the Media Uploader script
+wp_enqueue_media();
 ?>
 
 <div class="wrap"><div id="icon-tools" class="icon32"></div>
 	<h2>Level Level - Cookie Wall</h2>
+	<p>This cookie wall plugin requires some additional server configuration. It works with both Nginx and Apache.</p>
 	<form method="post">
 		<input type="hidden" name="page" value="ll-cookie-wall-settings" />
 		<p>
@@ -50,8 +57,37 @@ if( isset( $cookie_wall_options['page_url'] ) ) {
 			<label>More info page URL</label><br>
 			<input type="text" name="llcw_url" value="<?php echo $page_url; ?>" />
 		</p>
+		<div>
+			<p>
+				<label for="image_url">Background image</label><br>
+				<input type="text" name="image_url" value="<?php echo $image_url; ?>" id="image_url" class="regular-text">
+				<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
+			</p>
+		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				$('#upload-btn').click(function(e) {
+					e.preventDefault();
+					var image = wp.media({
+						title: 'Upload Image',
+						// mutiple: true if you want to upload multiple files at once
+						multiple: false
+					}).open()
+						.on('select', function(e){
+							// This will return the selected image from the Media Uploader, the result is an object
+							var uploaded_image = image.state().get('selection').first();
+							// We convert uploaded_image to a JSON object to make accessing it easier
+							// Output to the console uploaded_image
+							console.log(uploaded_image);
+							var image_url = uploaded_image.toJSON().url;
+							// Let's assign the url value to the input field
+							$('#image_url').val(image_url);
+						});
+				});
+			});
+		</script>
 		<p>
-			<input type="submit" name="llcw_submit" value="Opslaan" />
+			<input type="submit" name="llcw_submit" value="Save" />
 		</p>
 	</form>
 </div>
