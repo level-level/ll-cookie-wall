@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Jos Achterberg
- * Date: 22-06-15
- * Time: 10:16
- */
 
 $cookie_wall_options    = get_option( 'llcw_settings' );
 $description            = '';

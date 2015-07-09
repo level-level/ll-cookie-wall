@@ -8,6 +8,7 @@
     Author URI: http://level-level.com
     Text Domain: ll-cookie-wall
  */
+
 function ll_is_robot() {
 	$robots = array();
 	$robots[] = 'ABCdatos';
@@ -100,6 +101,7 @@ function ll_is_robot() {
 	$robots[] = 'GetURL';
 	$robots[] = 'Golem';
 	$robots[] = 'Googlebot';
+	$robots[] = 'Google';
 	$robots[] = 'Grapnel/0.01 Experiment';
 	$robots[] = 'Griffon';
 	$robots[] = 'Gromit';
@@ -243,6 +245,7 @@ function ll_is_robot() {
 	$robots[] = 'spider_monkey';
 	$robots[] = 'SpiderBot';
 	$robots[] = 'Slackbot';
+	$robots[] = 'Slack';
 	$robots[] = 'Skype';
 	$robots[] = 'Spiderline Crawler';
 	$robots[] = 'SpiderMan';
