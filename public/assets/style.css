@@ -1,5 +1,4 @@
 body.ll_cookie_wall {
-    background: url('bg.png') no-repeat center top;
     font-family: arial, sans-serif;
     font-size: 15px;
     color: #555;
@@ -36,7 +35,6 @@ body.ll_cookie_wall main section .btn-accept {
     border: none;
     padding: 10px;
     color: white;
-    width: auto;
     font-size: 16px;
     cursor: pointer;
     -webkit-border-radius: 6px;
