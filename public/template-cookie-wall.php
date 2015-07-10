@@ -28,8 +28,8 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 				<?php if( !empty( $page_url ) ) { ?>
 					<a href="<?php echo $page_url; ?>">Lees meer</a>
 				<?php } ?>
-				<form>
-					<input class="btn-accept" id="agree_with_cookie_terms" value="<?php echo $button_text; ?>" />
+				<form method="POST" id="ll_cookie_form">
+					<input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies" value="<?php echo $button_text; ?>" />
 				</form>
 			</section>
 		</main>
@@ -62,10 +62,18 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					return parms;
 				}
 				$(document).ready(function() {
-					var getvars = parseURLParams( window.location.href );
+					var getvars      = parseURLParams( window.location.href );
+					if( undefined == getvars || undefined == getvars.url_redirect ) {
+						var redirect_url = '/';
+					} else {
+						var redirect_url = getvars.url_redirect[0];
+					}
 
-					var redirect_url = getvars.url_redirect[0];
-
+					$("#ll_cookie_form").submit(function(e){
+						e.preventDefault();
+						$.cookie( 'LLCW', 'll_cookie_wall', { expires: 365, path: '/' } );
+						window.location.href = redirect_url;
+					});
 					$('#agree_with_cookie_terms').click(function(e) {
 						e.preventDefault();
 						$.cookie( 'LLCW', 'll_cookie_wall', { expires: 365, path: '/' } );
