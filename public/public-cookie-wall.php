@@ -2,22 +2,19 @@
 
 class Public_Cookie_Wall {
 	public function __construct() {
-		add_action( 'plugins_loaded', array( $this, 'check_cookie' ), 1 );
+		add_action( 'init', array( $this, 'custom_redirect' ) );
+		add_action( 'parse_request', array( $this, 'custom_parse_request' ) );
 	}
 
-	public function check_cookie() {
-		if( isset( $_COOKIE['LLCW'] ) ) {
-			// Nothing to do here
-		} else {
-			$cookie_wall_options = get_option( 'llcw_settings' );
-
-			if( isset( $_GET['llcw_cookie_agreement'] ) && $_GET['llcw_cookie_agreement'] == "accept" ) {
-				$expiration = $cookie_wall_options['expiration'];
-				setcookie( "LLCW", 'll_cookie_wall', time() + $expiration, '/' );
-			} else {
-				include_once( plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php' );
-				exit;
-			}
+	public function custom_parse_request( &$wp) {
+		if ( $wp->query_vars['name'] == 'cookie-wall' ) {
+			include plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php';
+			exit();
 		}
+		return;
+	}
+
+	public function custom_redirect() {
+		add_rewrite_rule( 'cookie-wall', plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php', 'top' );
 	}
 }
