@@ -6,7 +6,8 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 	$description    = $cookie_wall_options['description'];
 	$title          = $cookie_wall_options['title'];
 	$button_text    = $cookie_wall_options['button_text'];
-	$page_url       = $cookie_wall_options['page_url']; ?>
+	$page_url       = $cookie_wall_options['page_url'];
+	$tracking_code  = $cookie_wall_options['tracking_code']; ?>
 
 	<head>
 		<link href="<?php echo plugin_dir_url( __FILE__ ); ?>assets/style.css" rel="stylesheet" type="text/css" />
@@ -80,6 +81,17 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 						window.location.href = redirect_url;
 					});
 				});
+			</script>
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+				ga('create', '<?php echo $tracking_code ?>', 'auto');
+				ga('set', 'anonymizeIp', true);
+				ga('send', 'pageview');
+
 			</script>
 		</footer>
 	</body>

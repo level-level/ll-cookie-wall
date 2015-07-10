@@ -6,12 +6,11 @@ $expiration             = '';
 $title                  = '';
 $button_text            = '';
 $page_url               = '';
+$image_url              = '';
+$tracking_code          = '';
 
 if( isset( $cookie_wall_options['description'] ) ) {
 	$description = $cookie_wall_options['description'];
-}
-if( isset( $cookie_wall_options['expiration'] ) ) {
-	$expiration = $cookie_wall_options['expiration'];
 }
 if( isset( $cookie_wall_options['title'] ) ) {
 	$title = $cookie_wall_options['title'];
@@ -25,11 +24,13 @@ if( isset( $cookie_wall_options['page_url'] ) ) {
 if( isset( $cookie_wall_options['image_url'] ) ) {
 	$image_url = $cookie_wall_options['image_url'];
 }
+if( isset( $cookie_wall_options['tracking_code'] ) ) {
+	$tracking_code = $cookie_wall_options['tracking_code'];
+}
 
-// jQuery
 wp_enqueue_script('jquery');
-// This will enqueue the Media Uploader script
 wp_enqueue_media();
+
 ?>
 
 <div class="wrap"><div id="icon-tools" class="icon32"></div>
@@ -46,16 +47,16 @@ wp_enqueue_media();
 			<textarea cols="120" rows="20" name="llcw_description"><?php echo $description; ?></textarea>
 		</p>
 		<p>
-			<label>Cookie expiration</label><br>
-			<input type="text" name="llcw_expiration" value="<?php echo $expiration; ?>" />
-		</p>
-		<p>
 			<label>Agree button text</label><br>
 			<input type="text" name="llcw_btn_text" value="<?php echo $button_text; ?>" />
 		</p>
 		<p>
 			<label>More info page URL</label><br>
 			<input type="text" name="llcw_url" value="<?php echo $page_url; ?>" />
+		</p>
+		<p>
+			<label>Google Analytics - Tracking code</label><br>
+			<input type="text" name="llcw_tracking_code" value="<?php echo $tracking_code; ?>" />
 		</p>
 		<div>
 			<p>
@@ -70,17 +71,12 @@ wp_enqueue_media();
 					e.preventDefault();
 					var image = wp.media({
 						title: 'Upload Image',
-						// mutiple: true if you want to upload multiple files at once
 						multiple: false
 					}).open()
 						.on('select', function(e){
-							// This will return the selected image from the Media Uploader, the result is an object
 							var uploaded_image = image.state().get('selection').first();
-							// We convert uploaded_image to a JSON object to make accessing it easier
-							// Output to the console uploaded_image
 							console.log(uploaded_image);
 							var image_url = uploaded_image.toJSON().url;
-							// Let's assign the url value to the input field
 							$('#image_url').val(image_url);
 						});
 				});
