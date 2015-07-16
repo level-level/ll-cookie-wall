@@ -20,6 +20,26 @@ body.ll_cookie_wall main {
 body.ll_cookie_wall main section {
     padding: 20px;
 }
+body.ll_cookie_wall main section #llcw_read_more {
+    float:left;
+    display: none;
+}
+body.ll_cookie_wall main section #llcw_read_more p {
+    margin-top: 0;
+}
+body.ll_cookie_wall main section #llcw_read_more p:first-child {
+    display: none;
+}
+
+body.ll_cookie_wall main section #expand_description {
+    color: #005fb3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+body.ll_cookie_wall main section #logo {
+    max-width: 300px;
+    max-height: 150px;
+}
 body.ll_cookie_wall main section h1 {
     font-weight: normal;
     margin-bottom: 0;

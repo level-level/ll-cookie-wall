@@ -11,6 +11,7 @@
 
 class LL_Cookie_Wall {
 	public function __construct() {
+		load_plugin_textdomain( 'll_cookie_wall', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		if( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) ) {
 			include_once( plugin_dir_path( __FILE__ ) . 'admin/admin-cookie-wall.php' );
