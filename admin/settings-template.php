@@ -1,5 +1,19 @@
 <?php
 
+/*
+ * Todo:
+ * X Afvangen apache of nginx
+ * - Nginx code schrijven
+ * X Meer uitleg
+ * X Wysiwyg
+ * X Read-more shortcode > uitschuiven met jQuery
+ * X Feedback voor background img (formaat etc.)
+ * X Logo (optioneel)
+ * X Multilangual
+ * X Blurry background
+ *
+ */
+
 $plugin_text_domain     = 'll_cookie_wall';
 
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
@@ -71,29 +85,36 @@ $tiny_mce_settings = array(
 
 <div class="wrap">
 	<h2>Level Level - Cookie Wall</h2>
-	<?php
-		if( $server_software == 'apache' ) {
-			if( !empty( $htaccess_content ) ) {
-				?><h4><?php echo __( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
-				<p class="explanation"><?php echo __( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
+
+		<?php
+		$server_software = '';
+		if( !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
+			<div id="llcw_server_settings_popup"><?php
+				if( $server_software == 'apache' ) {
+					if( !empty( $htaccess_content ) ) {
+						?><h4><?php echo __( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
+						<p class="explanation"><?php echo __( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
 					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></p>
-				<textarea cols="130" rows="18" ><?php echo $htaccess_content; ?></textarea><?php
-			}
-		} else if( $server_software == 'nginx' ) {
-			if( !empty( $nginx_content ) ) {
-				?><h4><?php echo __( 'You are using an Nginx server', $plugin_text_domain ) ?></h4>
-				<p class="explanation"><?php echo __( "The following code is necessary for this plugin to work properly.
+						<textarea cols="130" rows="18" ><?php echo $htaccess_content; ?></textarea><?php
+					}
+				} else if( $server_software == 'nginx' ) {
+					if( !empty( $nginx_content ) ) {
+						?><h4><?php echo __( 'You are using an Nginx server', $plugin_text_domain ) ?></h4>
+						<p class="explanation"><?php echo __( "The following code is necessary for this plugin to work properly.
 					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
-				<textarea cols="130" rows="5" ><?php echo $nginx_content; ?></textarea><?php
-			}
-		} else {
-			if( !empty( $htaccess_content ) || !empty( $nginx_content ) ) {
-				?><h4><?php echo __( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
-				<p class="explanation"><?php echo __( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></p>
-				<textarea cols="130" rows="18"><?php echo $htaccess_content; ?></textarea>
-				<p class="explanation"><?php echo __( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></p>
-				<textarea cols="130" rows="5"><?php echo $nginx_content; ?></textarea><?php
-			}
+						<textarea cols="130" rows="5" ><?php echo $nginx_content; ?></textarea><?php
+					}
+				} else {
+					if ( ! empty( $htaccess_content ) || ! empty( $nginx_content ) ) {
+						?>
+						<h4><?php echo __( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
+						<p class="explanation"><?php echo __( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></p>
+						<textarea cols="130" rows="18"><?php echo $htaccess_content; ?></textarea>
+						<p class="explanation"><?php echo __( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></p>
+						<textarea cols="130" rows="5"><?php echo $nginx_content; ?></textarea><?php
+					}
+				}?>
+			</div><?php
 		}
 	?>
 	<form method="post">

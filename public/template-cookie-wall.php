@@ -92,7 +92,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 
 					$("#expand_description").click(function(e) {
 						e.preventDefault();
-						$("#llcw_read_more").slideToggle();
+						$("#llcw_read_more").stop(1,1).slideToggle(250);
 					})
 
 					$("#ll_cookie_form").submit(function(e){

@@ -7,7 +7,7 @@ class Public_Cookie_Wall {
 		add_filter( 'the_content', array( $this, 'custom_fold' ) );
 
 		if( isset( $_POST['ll_agree_cookies'] ) ) {
-			setcookie( "LLCW", 'll_cookie_wall', strtotime( '+365 days' ), '/' );
+			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/' );
 			if( isset( $_GET['url_redirect'] ) ) {
 				header("Location: " . $_GET['url_redirect']);
 				die();

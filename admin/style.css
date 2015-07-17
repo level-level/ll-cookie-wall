@@ -18,3 +18,11 @@
 .wrap input[type=button] {
     margin-top: 6px;
 }
+.wrap #llcw_server_settings_popup {
+    padding: 4px 25px 16px;
+    background: white;
+    border: 1px solid #eaeaea;
+}
+.wrap #llcw_server_settings_popup textarea {
+    margin: 5px 0;
+}
