@@ -4,11 +4,21 @@ $base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
+$font-size-h1:     20px;
+$font-size-h2:     16px;
+$font-size-h3:     13px;
+
 $spacing-unit:     30px;
 
+$white:            #fff;
 $text-color:       #111;
-$background-color: #ffffff;
+$background-color: $white;
 $brand-color:      #2a7ae2;
+
+$brand-bg-color:   #ffffff;
+
+$margin:           20px;
+$header-height:    155px;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);

@@ -1,0 +1,25 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.page-content {
+    position: relative;
+    padding-left: $margin;
+    margin-top: 140px;
+
+  h1 {
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .about-plugin {
+    text-align: center;
+    padding: 30px 0;
+
+  }
+}

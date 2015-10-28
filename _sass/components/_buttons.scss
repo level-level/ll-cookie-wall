@@ -1,0 +1,27 @@
+.button {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  color: $text-color;
+  background-color: $white;
+
+  border: 1px solid #000;
+
+  margin: 0 auto;
+  display: block;
+
+
+  &.small-button {
+    font-size: 13px;
+    padding: 5px;
+    width: 150px;
+  }
+
+  &.large-button {
+    font-size: $base-font-size;
+    padding: 10px;
+    width: 200px;
+  }
+}
+

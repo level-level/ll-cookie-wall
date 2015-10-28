@@ -1,0 +1,23 @@
+.main-header {
+  position: fixed;
+  overflow: hidden;
+  z-index: 999;
+  width: 100%;
+  height: $header-height;
+  top: 0;
+  left: 0;
+
+
+  padding: $margin;
+  background-color: $brand-bg-color;
+
+  transition: all 0.4s ease;
+  .site-title {
+    margin-bottom: 0;
+  }
+  .subtitle {
+  }
+  .site-title, .subtitle {
+    text-align: center;
+  }
+}
