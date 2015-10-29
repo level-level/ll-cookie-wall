@@ -1,0 +1,10 @@
+.main-header {
+
+  height: $header-height-dt;
+  padding: 30px;
+
+  &.sticky {
+    height: 120px;
+  }
+
+}

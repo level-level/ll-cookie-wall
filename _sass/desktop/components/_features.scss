@@ -1,0 +1,29 @@
+.features {
+  clear: both;
+  margin-left: -$margin-dt;
+  margin-right: -$margin-dt;
+
+  padding: 50px $margin-dt;
+
+  h1 {
+    padding-bottom: 50px;
+  }
+
+  .feature-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .feature-item {
+      flex-grow: 1;
+      width: 33.33%;
+      margin-bottom: 65px;
+
+      h2, p {
+        margin: auto;
+        width: 70%;
+      }
+    }
+  }
+}

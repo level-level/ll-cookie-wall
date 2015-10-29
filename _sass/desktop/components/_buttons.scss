@@ -1,0 +1,14 @@
+.button {
+
+  &.small-button {
+    font-size: $base-font-size;
+    padding: 10px;
+    width: 200px;
+    &:after {
+      right: 15px;
+      top: 12px;
+    }
+  }
+
+}
+

@@ -15,13 +15,15 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+
+
 /**
  * Basic styling
  */
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;
-  font-weight: $base-font-weight;
+  font-weight: $font-weight-base;
   line-height: $base-line-height;
   color: $text-color;
   background-color: $background-color;
@@ -84,13 +86,24 @@ li {
     }
 }
 
+a {
+  text-decoration: none;
+  color: #D8D8D8;
+  &:hover {
+    color: $white !important;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+}
 
 
 /**
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    //font-weight: $base-font-weight;
+    font-weight: $font-weight-medium;
+    line-height: 33px;
 }
 h1 {
   font-size: $font-size-h1;
@@ -103,24 +116,6 @@ h2 {
 h3 {
   font-size: $font-size-h3;
 }
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
-
 
 
 /**

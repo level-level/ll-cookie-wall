@@ -1,22 +1,56 @@
 .site-footer {
   position: relative;
-  font-size: 13px;
+  height: 300px;
+  font-size: 15px;
   padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: $brand-bg-color;
+  background-color: $grey;
+  color: #D8D8D8;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  .footer-title {
+    display: block;
+    font-weight: $font-weight-medium;
+    padding-bottom: 5px;
+  }
 
   .support-item {
     order: 1;
-    ul {
-      list-style: none;
-      margin: 0;
+    width: 70%;
+
+    .more-info {
+      ul {
+        li {
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .copyright {
+      position: absolute;
+      bottom: 45px;
+      .logo {
+        display: block;
+        height: 20px;
+        width: 120px;
+        margin-bottom: 10px;
+        background-image: url('../assets/level-level-logo.svg');
+      }
+      .copyright-info {
+        display: block;
+      }
     }
   }
 
   .footer-items {
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,21 +58,22 @@
 
     .footer-item {
       order: 1;
-      width: 50%;
       padding-bottom: 5px;
 
-      ul {
-        list-style: none;
+
+      .button {
         margin: 0;
       }
-
       &.social {
+        position: absolute;
+        top: 80px;
         ul {
           li {
             display: inline;
             a {
               float: left;
               padding-right: 5px;
+              font-size: 35px;
             }
           }
         }

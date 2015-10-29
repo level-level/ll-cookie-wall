@@ -1,24 +1,37 @@
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: 'Lato', sans-serif;
 $base-font-size:   16px;
-$base-font-weight: 400;
 $small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$base-line-height: 25px;
 
 $font-size-h1:     20px;
+$font-size-h1-dt:  32px;
 $font-size-h2:     16px;
+$font-size-h2-dt:  24px;
 $font-size-h3:     13px;
+
+$font-weight-base:  300;
+$font-weight-medium:400;
+$font-weight-bold:  700;
+
 
 $spacing-unit:     30px;
 
+
+$green:            #3AB074;
+$grey:             #424242;
+$light-grey:       #F7F7F7;
+$green-opacity:     rgba(58,176,116, .8);
 $white:            #fff;
-$text-color:       #111;
+$text-color:       #424242;
 $background-color: $white;
 $brand-color:      #2a7ae2;
 
 $brand-bg-color:   #ffffff;
 
 $margin:           20px;
+$margin-dt:        40px;
 $header-height:    155px;
+$header-height-dt: 225px;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);

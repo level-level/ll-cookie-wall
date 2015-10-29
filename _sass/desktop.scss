@@ -1,3 +1,8 @@
 @media (min-width: 768px) {
-
+  @import "desktop/common/_header.scss";
+  @import "desktop/common/_footer.scss";
+  @import "desktop/components/_layout.scss";
+  @import "desktop/components/_type.scss";
+  @import "desktop/components/_buttons.scss";
+  @import "desktop/components/_features.scss";
 }

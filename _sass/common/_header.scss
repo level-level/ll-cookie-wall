@@ -7,17 +7,34 @@
   top: 0;
   left: 0;
 
-
-  padding: $margin;
+  padding: 10px;
   background-color: $brand-bg-color;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,.11);
+
 
   transition: all 0.4s ease;
   .site-title {
+    a{
+      color: $text-color;
+      &:hover {
+        color: $text-color !important;
+      }
+    }
+
     margin-bottom: 0;
   }
   .subtitle {
   }
   .site-title, .subtitle {
     text-align: center;
+  }
+
+  &.sticky {
+    height: 85px;
+    padding: $margin;
+    .site-title, .subtitle {
+      display: none;
+    }
   }
 }

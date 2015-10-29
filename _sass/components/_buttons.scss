@@ -1,27 +1,58 @@
 .button {
+  position: relative;
   text-decoration: none;
-  text-transform: uppercase;
   text-align: center;
+  border-radius: 4px;
+  color: $white;
+  line-height: 25px;
 
-  color: $text-color;
-  background-color: $white;
+  &a {
+    &:visited {
+      color: $white;
+    }
 
-  border: 1px solid #000;
+  }
 
   margin: 0 auto;
   display: block;
 
+  &:after {
+    content: '\e908';
+    position: absolute;
+    right: 15px;
+    top: 12px;
+  }
 
-  &.small-button {
+  &.read-button {
     font-size: 13px;
     padding: 5px;
     width: 150px;
+    font-weight: 600;
+
+    border: 2px solid #fff;
+    &:after {
+      top: 7px;
+      right: 5px;
+    }
   }
 
-  &.large-button {
+  &.download-button {
     font-size: $base-font-size;
+    text-transform: lowercase;
     padding: 10px;
     width: 200px;
+    background-color: $green;
+    font-weight: $font-weight-medium;
+  }
+
+  &.small-button {
+    font-size: 13px;
+    width: 150px;
+    padding: 5px;
+    &:after {
+      top: 6px;
+      right: 8px;
+    }
   }
 }
 

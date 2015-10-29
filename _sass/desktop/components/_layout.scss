@@ -1,0 +1,39 @@
+.page-content {
+  margin-top: $header-height-dt;
+  padding: 0 $margin-dt;
+
+  p {
+    padding: 0;
+  }
+
+  .wrapper {
+    margin-left: -$margin-dt;
+  }
+
+  .feature-image {
+    float: right;
+    width: 50%;
+    margin-right: -$margin-dt;
+
+  }
+  .about-plugin {
+    text-align: left;
+    float: left;
+    width: 50%;
+    padding: 5%;
+    margin: 0;
+    display: table-cell;  
+
+    .button {
+      float: left;
+    }
+    h1, p {
+      vertical-align: middle;
+      padding-bottom: 10px;
+    }
+    p {
+      max-width: 500px;
+      margin: 0;
+    }
+  }
+}
