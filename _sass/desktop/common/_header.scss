@@ -1,10 +1,15 @@
 .main-header {
 
   height: $header-height-dt;
-  padding: 30px;
-
-  &.sticky {
-    height: 120px;
+  padding: 50px;
+  .site-title {
+    font-size: 45px;
+  }
+  .subitile {
+    font-size: 25px;
   }
 
+  .site-title, .subtitle {
+    line-height: 34px;
+  }
 }

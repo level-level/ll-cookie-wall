@@ -4,18 +4,28 @@
 
   .support-item {
     width: 40%;
+    .more-info {
+      ul {
+        li {
+          font-size: 15px;
+        }
+      }
+    }
   }
   .footer-items {
     width: 75%;
     flex-direction: row;
+    -ms-flex-direction: row;
 
     .footer-item {
       .button {
         margin-right: $margin-dt;
+        top: 75px;
       }
       &.social {
-        position: relative;
-        top: 0;
+        position: absolute;
+        top: 60px;
+        right: 50%;
         order: -1;
       }
     }

@@ -1,28 +1,47 @@
 .features {
   clear: both;
   margin-left: -$margin-dt;
-  margin-right: -$margin-dt;
 
-  padding: 50px $margin-dt;
+  padding: 60px $margin 0 130px;
 
   h1 {
+    margin: 0;
     padding-bottom: 50px;
   }
 
   .feature-items {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
     align-items: center;
     justify-content: center;
+
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+
     flex-direction: row;
+    -ms-flex-direction: row;
+
     .feature-item {
       flex-grow: 1;
+      -ms-flex-grow: 1;
       width: 33.33%;
-      margin-bottom: 65px;
+      margin-bottom: 90px;
 
       h2, p {
         margin: auto;
-        width: 70%;
+        width: 85%;
+      }
+      h2 {
+        font-size: 27px;
+        padding-bottom: 10px;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 26px;
       }
     }
   }

@@ -7,15 +7,26 @@
   top: 0;
   left: 0;
 
-  padding: 10px;
+  padding: 20px;
   background-color: $brand-bg-color;
 
-  box-shadow: 0 2px 5px rgba(0,0,0,.11);
-
-
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .11);
   transition: all 0.4s ease;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 9px;
+    width: 100%;
+    background-color: $green;
+  }
+
   .site-title {
-    a{
+    font-size: 25px;
+    a {
       color: $text-color;
       &:hover {
         color: $text-color !important;
@@ -25,15 +36,30 @@
     margin-bottom: 0;
   }
   .subtitle {
+    font-weight: $font-weight-base;
+    font-size: 15px;
   }
   .site-title, .subtitle {
+    line-height: 22px;
     text-align: center;
+  }
+
+  .free {
+    display: block;
+    text-align: center;
+    color: #878787;
+    font-size: 13px;
   }
 
   &.sticky {
     height: 85px;
-    padding: $margin;
-    .site-title, .subtitle {
+    padding: 20px;
+    .site-title, .subtitle, .free {
+      display: none;
+    }
+
+    &:before {
+      content: '';
       display: none;
     }
   }

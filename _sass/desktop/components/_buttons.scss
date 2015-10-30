@@ -4,10 +4,16 @@
     font-size: $base-font-size;
     padding: 10px;
     width: 200px;
-    &:after {
-      right: 15px;
-      top: 12px;
+    .icon {
+      &:after {
+        right: 15px;
+        top: 15px;
+      }
     }
+  }
+
+  &.read-button {
+    font-size: 18px;
   }
 
 }

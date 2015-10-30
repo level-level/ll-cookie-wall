@@ -1,12 +1,9 @@
 .site-footer {
   position: relative;
-  height: 300px;
+  clear: both;
+  height: 400px;
   font-size: 15px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
+  padding: $margin;
   background-color: $grey;
   color: #D8D8D8;
 
@@ -22,20 +19,20 @@
   }
 
   .support-item {
-    order: 1;
-    width: 70%;
 
     .more-info {
+      padding-bottom: 25px;
       ul {
         li {
           padding-bottom: 5px;
+          font-size: 13px;
         }
       }
     }
 
     .copyright {
       position: absolute;
-      bottom: 45px;
+      bottom: 30px;
       .logo {
         display: block;
         height: 20px;
@@ -45,28 +42,23 @@
       }
       .copyright-info {
         display: block;
+        font-size: 13px;
       }
     }
   }
 
   .footer-items {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    order: 1;
 
     .footer-item {
-      order: 1;
       padding-bottom: 5px;
 
-
       .button {
+        position: absolute;
+        top: 25px;
+        right: 25px;
         margin: 0;
       }
       &.social {
-        position: absolute;
-        top: 80px;
         ul {
           li {
             display: inline;

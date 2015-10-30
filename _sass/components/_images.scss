@@ -1,0 +1,41 @@
+@mixin fill($spacing: 0) {
+  position: absolute;
+  top: $spacing; bottom: $spacing;
+  left: $spacing; right: $spacing;
+}
+
+
+@mixin aspect-ratio($w, $h, $spacing: 0) {
+  $ratio: ($h / $w);
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: (100% * $ratio);
+  }
+
+  > * {
+    @include fill($spacing);
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.feature-image {
+  position: relative;
+  overflow: hidden;
+
+  //@include aspect-ratio(560, 460);
+
+  img {
+    top: -25%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+

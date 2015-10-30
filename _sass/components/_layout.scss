@@ -5,14 +5,13 @@ html, body {
 }
 
 .page-content {
-    position: relative;
-    padding-left: $margin;
-    margin-top: 140px;
+  position: relative;
+  padding-left: $margin;
+  margin-top: 140px;
 
   .wrapper {
     background-color: $green-opacity;
     margin-left: -$margin;
-
   }
 
   h1 {
@@ -22,17 +21,39 @@ html, body {
     font-size: 13px;
   }
 
-  .about-plugin {
-    text-align: center;
-    padding: $margin;
-    color: $white;
-    width: 100%;
-    h1 {
-      word-spacing: 5px;
+  .about-block {
+    .feature-image {
+      max-height: 280px;
     }
-    p {
-      margin: 0 auto 10px auto;
-      width: 80%;
+    .about-plugin {
+      text-align: center;
+      padding: $margin;
+      color: $white;
+      width: 100%;
+      h1 {
+        word-spacing: 5px;
+      }
+      p {
+        margin: 0 auto 20px auto;
+        width: 90%;
+      }
     }
   }
+  .intro-guide {
+    padding: $margin;
+    color: $white;
+    text-align: center;
+  }
+  .guide-items {
+    background-color: $light-grey;
+    padding: 0 $margin;
+
+    .guide-item {
+      padding-bottom: 25px;
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+
 }
