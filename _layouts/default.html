@@ -4,73 +4,29 @@
     <div class="wrapper">
         <div class="about-block">
             <div class="feature-image">
-                <img src="{{site.baseurl}}/assets/test.jpg">
             </div>
             <div class="about-plugin">
                 <h1>About the plugin</h1>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies feugiat sagittis. Nullam semper,
-                    eros ut auctor rhoncus, dui nisl cursus turpis, sed porttitor ipsum lacus a enim. Integer nec enim
-                    sodales, laoreet lorem et, porta risus. Nulla venenatis tempor est. Quisque vel ornare odio. Nunc
-                    viverra molestie tellus.
-                </p>
-                <a class="button read-button" href="/user-guide/"><span class="icon"></span> Read user guide </a>
+                <p>{{site.description}}</p>
+                <a class="button read-button" href="/get-started/"><span class="icon"></span> Get started </a>
             </div>
         </div>
         <div class="features">
             <h1>Plugin features</h1>
 
             <div class="feature-items">
+
+                {% for feature in site.features %}
                 <div class="feature-item">
                     <h2>
-                        <span class="icon icon-social"></span>
-                        Social sharing
+                        <span class="icon icon-{{feature.icon}}"></span>
+                        {{feature.title}}
                     </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-analytics"></span>
-                        Google Analaytics
-                    </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-lock"></span>
-                        Custom privacy page
-                    </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-block"></span>
-                        100% block
-                    </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-law"></span>
-                        Europe law
-                    </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-customize"></span>
-                        Customize
-                    </h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
-                </div>
+                  <p>{{feature.content}}</p>
+                    </div>
+                {% endfor %}
             </div>
-
         </div>
     </div>
 </div>

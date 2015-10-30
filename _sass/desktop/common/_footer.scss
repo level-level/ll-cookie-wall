@@ -1,6 +1,6 @@
 .site-footer {
-  height: 320px;
-  padding: 60px;
+  height: 280px;
+  padding: 40px 60px;
 
   .support-item {
     width: 40%;
@@ -20,11 +20,11 @@
     .footer-item {
       .button {
         margin-right: $margin-dt;
-        top: 75px;
+        top: 55px;
       }
       &.social {
         position: absolute;
-        top: 60px;
+        top: 40px;
         right: 50%;
         order: -1;
       }

@@ -25,14 +25,14 @@ img {
   height: auto;
 }
 
-.feature-image {
+.example-image {
   position: relative;
   overflow: hidden;
 
-  //@include aspect-ratio(560, 460);
+  @include aspect-ratio(16, 9);
 
   img {
-    top: -25%;
+    //top: -25%;
     max-width: 100%;
     width: auto;
     height: auto;

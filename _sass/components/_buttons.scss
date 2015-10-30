@@ -45,6 +45,25 @@
     }
   }
 
+  //&.read-button-green {
+  //  padding: 5px;
+  //  width: 200px;
+  //  font-weight: 300;
+  //  color: $green;
+  //  border: 2px solid $green;
+  //  transition: background-color .4s;
+  //  .icon {
+  //    &:after {
+  //      top: 9px;
+  //      right: 15px;
+  //    }
+  //  }
+  //  &:hover {
+  //    background-color: $green;
+  //    color: $white !important;
+  //  }
+  //}
+
   &.download-button {
     font-size: $base-font-size;
     text-transform: lowercase;

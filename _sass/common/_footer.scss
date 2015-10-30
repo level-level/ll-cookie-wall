@@ -1,7 +1,7 @@
 .site-footer {
   position: relative;
   clear: both;
-  height: 400px;
+  height: 340px;
   font-size: 15px;
   padding: $margin;
   background-color: $grey;
@@ -19,13 +19,19 @@
   }
 
   .support-item {
-
     .more-info {
       padding-bottom: 25px;
       ul {
         li {
           padding-bottom: 5px;
           font-size: 13px;
+          a {
+            transition: color .4s;
+
+            &:hover {
+              color: $green !important;
+            }
+          }
         }
       }
     }
@@ -48,7 +54,6 @@
   }
 
   .footer-items {
-
     .footer-item {
       padding-bottom: 5px;
 
@@ -66,6 +71,11 @@
               float: left;
               padding-right: 5px;
               font-size: 35px;
+              transition: color .4s;
+
+              &:hover {
+                color: $green !important;
+              }
             }
           }
         }

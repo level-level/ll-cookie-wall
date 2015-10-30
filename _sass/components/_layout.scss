@@ -10,7 +10,6 @@ html, body {
   margin-top: 140px;
 
   .wrapper {
-    background-color: $green-opacity;
     margin-left: -$margin;
   }
 
@@ -22,10 +21,23 @@ html, body {
   }
 
   .about-block {
+    position: relative;
+    overflow: hidden;
     .feature-image {
-      max-height: 280px;
+      position: relative;
+      width: 100%;
+      height: 230px;
+      font-size: 0;
+      line-height: 0;
+      vertical-align: middle;
+      background-size: 130%;
+      background-position: 70% 16%;
+      background-repeat: no-repeat;
+      background-image: url('../assets/cookiewall.jpg');
     }
     .about-plugin {
+      background-color: $green-opacity;
+
       text-align: center;
       padding: $margin;
       color: $white;
@@ -40,18 +52,30 @@ html, body {
     }
   }
   .intro-guide {
+    background-color: $green-opacity;
     padding: $margin;
     color: $white;
     text-align: center;
   }
   .guide-items {
     background-color: $light-grey;
-    padding: 0 $margin;
+    padding: 25px $margin;
 
     .guide-item {
       padding-bottom: 25px;
+
+      .example-image {
+        margin-bottom: 20px;
+      }
+
       h2 {
         margin: 0;
+      }
+
+      .step-info {
+        p {
+          font-weight: 300;
+        }
       }
     }
   }
