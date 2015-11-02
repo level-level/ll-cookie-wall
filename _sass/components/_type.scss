@@ -62,6 +62,23 @@ img {
  */
 ul, ol {
     margin-left: $spacing-unit;
+
+}
+
+ul {
+  li {
+    list-style: none;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      border: .23em solid $green;
+      border-radius: 0.333em;
+      position: absolute;
+      top: 9px;
+      left: -20px;
+    }
+  }
 }
 
 li {

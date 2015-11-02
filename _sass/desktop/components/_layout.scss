@@ -11,6 +11,9 @@
     font-weight: 100;
     line-height: 33px;
   }
+  ul {
+    font-size: 18px;
+  }
 
   .wrapper {
     margin-left: -$margin-dt;
@@ -89,7 +92,6 @@
             font-weight: 300;
             max-width: 750px;
           }
-
         }
       }
     }

@@ -16,9 +16,10 @@ html, body {
   h1 {
     text-transform: uppercase;
   }
-  p {
+  p, ul {
     font-size: 13px;
   }
+
 
   .about-block {
     position: relative;
@@ -76,6 +77,7 @@ html, body {
         p {
           font-weight: 300;
         }
+
       }
     }
   }

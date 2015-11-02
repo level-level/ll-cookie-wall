@@ -25,9 +25,13 @@
         li {
           padding-bottom: 5px;
           font-size: 13px;
+          &:before {
+            display:none;
+          }
           .info-link {
             color: $footer-color;
             transition: color .4s;
+
 
             &:hover {
               color: $green;
@@ -78,6 +82,9 @@
         ul {
           li {
             display: inline;
+            &:before {
+              display:none;
+            }
             .social-link {
               color: $footer-color;
               float: left;
