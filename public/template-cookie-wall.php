@@ -130,9 +130,9 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 		<main>
 			<section>
 				<?php if( !empty( $logo ) ) { ?>
-					<img id="logo" src="<?php echo $logo; ?>" alt="logo"/>
+					<img id="logo" src="<?php echo esc_url( $logo ); ?>" alt="logo"/>
 				<?php } ?>
-				<h1><?php echo apply_filters( 'the_title', $title ); ?></h1>
+				<h1><?php echo esc_html( $title ); ?></h1>
 				<p><?php echo apply_filters( "the_content", $description, $readmore_text, $button_text ); ?></p>
 			</section>
 		</main>
