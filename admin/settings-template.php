@@ -147,12 +147,6 @@ $tiny_mce_settings = array(
 			<label for="readmore_text"><?php echo __( "Read more text", $plugin_text_domain ) ?></label><br>
 			<input id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo $readmore_text; ?>" />
 		</p>
-<!--		<p>-->
-<!--			<label for="page_url">--><?php //echo __( "More info page URL - optional", $plugin_text_domain ) ?><!--</label><br>-->
-<!--			<p class="explanation" >--><?php //echo __( "Add a URI like 'cookie-info', or a full URL like 'https://yourwebsite.com/cookie-info.", $plugin_text_domain ) ?><!--</p>-->
-<!--			<p class="explanation" >--><?php //echo __( "Leave empty if you don't want it to appear on your cookie wall.", $plugin_text_domain ) ?><!--</p>-->
-<!--			<input id="page_url" type="text" name="llcw_url" value="--><?php //echo $page_url; ?><!--" />-->
-<!--		</p>-->
 		<p>
 			<label for="analytics"><?php echo __( "Google Analytics tracking code - optional", $plugin_text_domain ) ?></label><br>
 			<p class="explanation" ><?php echo __( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", $plugin_text_domain ) ?></p>

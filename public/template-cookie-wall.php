@@ -15,8 +15,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 <!DOCTYPE html>
 <html>
 	<head>
-<!--		<link href="--><?php //echo plugin_dir_url( __FILE__ ); ?><!--assets/style.css" rel="stylesheet" type="text/css" />-->
-		<style >
+		<style>
 			body.ll_cookie_wall {
 				font-family: arial, sans-serif;
 				font-size: 15px;
