@@ -5,61 +5,20 @@
         <div class="intro-guide">
             <h1>Get started</h1>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
-                dolor sit amet lacus accumsan et viverra justo commodo. </p>
+            <p>Install and activate in 3 easy steps.</p>
         </div>
         <div class="guide-items">
-            <div class="guide-item">
-                <div class="example-image">
-                    <img src="{{site.baseurl}}/assets/step-1.png">
+            {% for step in site.steps %}
+                <div class="guide-item">
+                    <div class="example-image">
+                        <img src="{{site.baseurl}}/assets/{{step.image}}">
+                    </div>
+                    <div class="step-info">
+                        <h2>{{step.title}}</h2>
+                        {{step.content}}
+                    </div>
                 </div>
-
-                <div class="step-info">
-                    <h2>Install</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar
-                        tempor.Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida
-                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.</p>
-                </div>
-
-            </div>
-            <div class="guide-item">
-                <div class="example-image">
-                    <img src="{{site.baseurl}}/assets/step-1.png">
-                </div>
-
-                <div class="step-info">
-
-                    <h2>Configure</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar
-                        tempor.Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida
-                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.</p>
-                </div>
-            </div>
-            <div class="guide-item">
-                <div class="example-image">
-                    <img src="{{site.baseurl}}/assets/cookiewall-gif.gif">
-                </div>
-
-                <div class="step-info">
-
-                    <h2>And done!</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar
-                        tempor.Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin
-                        gravida
-                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

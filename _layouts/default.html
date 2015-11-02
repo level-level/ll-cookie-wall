@@ -3,27 +3,20 @@
 <div class="page-content">
     <div class="wrapper">
         <div class="about-block">
-            <div class="feature-image">
-            </div>
+            <div class="feature-image"></div>
             <div class="about-plugin">
                 <h1>About the plugin</h1>
-
                 <p>{{site.description}}</p>
                 <a class="button read-button" href="/get-started/"><span class="icon"></span> Get started </a>
             </div>
         </div>
         <div class="features">
             <h1>Plugin features</h1>
-
             <div class="feature-items">
-
                 {% for feature in site.features %}
-                <div class="feature-item">
-                    <h2>
-                        <span class="icon icon-{{feature.icon}}"></span>
-                        {{feature.title}}
-                    </h2>
-                  <p>{{feature.content}}</p>
+                    <div class="feature-item">
+                        <h2><span class="icon icon-{{feature.icon}}"></span>{{feature.title}}</h2>
+                        {{feature.content}}
                     </div>
                 {% endfor %}
             </div>

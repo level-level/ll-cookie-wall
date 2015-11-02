@@ -73,6 +73,13 @@ html, body {
       }
 
       .step-info {
+        a {
+          color: $green;
+          &:hover {
+            color: $green !important;
+            text-decoration: underline;
+          }
+        }
         p {
           font-weight: 300;
         }

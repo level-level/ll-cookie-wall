@@ -29,3 +29,5 @@ sass:
 collections:
   features:
     output: true
+  steps:
+    output: true
