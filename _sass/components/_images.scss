@@ -32,7 +32,6 @@ img {
   @include aspect-ratio(16, 9);
 
   img {
-    //top: -25%;
     max-width: 100%;
     width: auto;
     height: auto;

@@ -25,15 +25,14 @@
   }
 
   .site-title {
-    font-size: 25px;
-    a {
+    font-size: $site-title;
+    .home-link {
       color: $text-color;
       &:hover {
         color: $text-color;
         text-decoration: none;
       }
     }
-
     margin-bottom: 0;
   }
   .subtitle {
