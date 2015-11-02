@@ -51,6 +51,9 @@ class Admin_Cookie_Wall {
 		if( isset( $_POST['llcw_btn_text'] ) ) {
 			$settings['button_text'] = $_POST['llcw_btn_text'];
 		}
+		if( isset( $_POST['llcw_readmore_text'] ) ) {
+			$settings['readmore_text'] = $_POST['llcw_readmore_text'];
+		}
 		if( isset( $_POST['llcw_url'] ) ) {
 			$settings['page_url'] = $_POST['llcw_url'];
 		}

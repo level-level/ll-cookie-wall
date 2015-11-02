@@ -27,6 +27,7 @@ $description            = '';
 $expiration             = '';
 $title                  = '';
 $button_text            = '';
+$readmore_text          = '';
 $page_url               = '';
 $image_url              = '';
 $logo                   = '';
@@ -55,6 +56,9 @@ if( isset( $cookie_wall_options['title'] ) ) {
 }
 if( isset( $cookie_wall_options['button_text'] ) ) {
 	$button_text = $cookie_wall_options['button_text'];
+}
+if( isset( $cookie_wall_options['readmore_text'] ) ) {
+	$readmore_text = $cookie_wall_options['readmore_text'];
 }
 if( isset( $cookie_wall_options['page_url'] ) ) {
 	$page_url = $cookie_wall_options['page_url'];
@@ -138,6 +142,10 @@ $tiny_mce_settings = array(
 		<p>
 			<label for="button_text"><?php echo __( "Agree button text", $plugin_text_domain ) ?></label><br>
 			<input id="button_text" type="text" name="llcw_btn_text" value="<?php echo $button_text; ?>" />
+		</p>
+		<p>
+			<label for="readmore_text"><?php echo __( "Read more text", $plugin_text_domain ) ?></label><br>
+			<input id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo $readmore_text; ?>" />
 		</p>
 <!--		<p>-->
 <!--			<label for="page_url">--><?php //echo __( "More info page URL - optional", $plugin_text_domain ) ?><!--</label><br>-->
