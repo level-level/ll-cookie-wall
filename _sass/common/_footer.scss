@@ -5,7 +5,7 @@
   font-size: 15px;
   padding: $margin;
   background-color: $grey;
-  color: #D8D8D8;
+  color: $footer-color;
 
   ul {
     list-style: none;
@@ -25,11 +25,13 @@
         li {
           padding-bottom: 5px;
           font-size: 13px;
-          a {
+          .info-link {
+            color: $footer-color;
             transition: color .4s;
 
             &:hover {
-              color: $green !important;
+              color: $green;
+              text-decoration: none;
             }
           }
         }
@@ -49,6 +51,15 @@
       .copyright-info {
         display: block;
         font-size: 13px;
+        .info-link {
+          color: $footer-color;
+          transition: color .4s;
+
+          &:hover {
+            color: $green;
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -67,14 +78,16 @@
         ul {
           li {
             display: inline;
-            a {
+            .social-link {
+              color: $footer-color;
               float: left;
               padding-right: 5px;
               font-size: 35px;
               transition: color .4s;
 
               &:hover {
-                color: $green !important;
+                color: $green;
+                text-decoration: none;
               }
             }
           }

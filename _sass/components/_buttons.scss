@@ -6,13 +6,6 @@
   color: $white;
   line-height: 25px;
 
-  &a {
-    &:visited {
-      color: $white;
-    }
-
-  }
-
   margin: 0 auto;
   display: block;
 
@@ -36,12 +29,12 @@
       &:after {
         top: 9px;
         right: 15px;
-
       }
     }
     &:hover {
       background-color: $white;
-      color: $green !important;
+      color: $green;
+      text-decoration: none;
     }
   }
   &.download-button {
@@ -56,6 +49,7 @@
 
     &:hover {
       background-color: #329B66;
+      text-decoration: none;
       .icon {
         &:after {
           transform: translateX(3px);
