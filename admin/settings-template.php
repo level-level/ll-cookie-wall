@@ -28,7 +28,6 @@ $expiration             = '';
 $title                  = 'Cookie Wall';
 $button_text            = 'I agree';
 $readmore_text          = 'Read more';
-$page_url               = '';
 $image_url              = '';
 $logo                   = '';
 $tracking_code          = '';
@@ -59,9 +58,6 @@ if( isset( $cookie_wall_options['button_text'] ) ) {
 }
 if( isset( $cookie_wall_options['readmore_text'] ) ) {
 	$readmore_text = $cookie_wall_options['readmore_text'];
-}
-if( isset( $cookie_wall_options['page_url'] ) ) {
-	$page_url = $cookie_wall_options['page_url'];
 }
 if( isset( $cookie_wall_options['image_url'] ) ) {
 	$image_url = $cookie_wall_options['image_url'];

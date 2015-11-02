@@ -7,7 +7,6 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 	$title              = $cookie_wall_options['title'];
 	$button_text        = $cookie_wall_options['button_text'];
 	$readmore_text      = $cookie_wall_options['readmore_text'];
-	$page_url           = $cookie_wall_options['page_url'];
 	$tracking_code      = $cookie_wall_options['tracking_code'];
 	$logo               = $cookie_wall_options['logo'];
 	$blurry_background  = $cookie_wall_options['blurry_background'];
@@ -135,9 +134,6 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 				<?php } ?>
 				<h1><?php echo apply_filters( 'the_title', $title ); ?></h1>
 				<p><?php echo apply_filters( "the_content", $description, $readmore_text, $button_text ); ?></p>
-				<?php if( !empty( $page_url ) ) { ?>
-					<a href="<?php echo $page_url; ?>"><?php echo $readmore_text;?></a>
-				<?php } ?>
 			</section>
 		</main>
 		<footer>

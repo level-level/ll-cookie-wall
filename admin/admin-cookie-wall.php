@@ -26,7 +26,7 @@ class Admin_Cookie_Wall {
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
-		add_submenu_page( 'options-general.php', 'Cookie Wall for WordPress', 'Cookie Wall for WordPress', 'manage_options', 'cookie-wall-for-wordpress', array( $this, 'll_cookie_wall_page_callback' ) );
+		add_submenu_page( 'options-general.php', 'Cookie Wall for WordPress', 'Cookie Wall for WordPress', 'manage_options', 'll-cookie-wall-settings', array( $this, 'll_cookie_wall_page_callback' ) );
 	}
 
 	public function ll_cookie_wall_page_callback() {
@@ -53,9 +53,6 @@ class Admin_Cookie_Wall {
 		}
 		if( isset( $_POST['llcw_readmore_text'] ) ) {
 			$settings['readmore_text'] = $_POST['llcw_readmore_text'];
-		}
-		if( isset( $_POST['llcw_url'] ) ) {
-			$settings['page_url'] = $_POST['llcw_url'];
 		}
 		if( isset( $_POST['llcw_tracking_code'] ) ) {
 			$settings['tracking_code'] = $_POST['llcw_tracking_code'];
