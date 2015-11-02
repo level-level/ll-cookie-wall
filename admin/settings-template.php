@@ -88,7 +88,7 @@ $tiny_mce_settings = array(
 ?>
 
 <div class="wrap">
-	<h2>Level Level - Cookie Wall</h2>
+	<h2>Cookie Wall for WordPress</h2>
 
 		<?php
 		$server_software = '';
