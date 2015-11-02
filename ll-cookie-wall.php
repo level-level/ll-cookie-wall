@@ -1,8 +1,8 @@
 <?php
 /*
-    Plugin Name: Level Level Cookie Wall
-    Plugin URI: http://level-level.com
-    Description: Blocks site until cookies are accepted - by EU cookie law 2015
+    Plugin Name: Cookie Wall for WordPress
+    Plugin URI: http://cookiewallforwp.com
+    Description: The Cookie Wall for WordPress is a plugin to comply with the EU law. Instead of offering a way to continue browsing without cookies, which possibly means loss of income for publishers, this cookie wall only accepts a confirmation.
     Version: 1.0
     Author: Level Level
     Author URI: http://level-level.com
