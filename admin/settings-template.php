@@ -25,9 +25,9 @@ $htaccess_content       = '';
 $nginx_content          = '';
 $description            = '';
 $expiration             = '';
-$title                  = 'Cookie Wall';
-$button_text            = 'I agree';
-$readmore_text          = 'Read more';
+$title                  = __('Cookie Wall');
+$button_text            = __('I agree');
+$readmore_text          = __('Read more');
 $image_url              = '';
 $logo                   = '';
 $tracking_code          = '';
@@ -88,7 +88,7 @@ $tiny_mce_settings = array(
 		<?php
 		$server_software = '';
 		if( !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
-			<div class="updated" id="llcw_server_settings_popup"><?php
+			<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible" id="llcw_server_settings_popup"><?php
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
 						?><h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
@@ -205,7 +205,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<input class="button button-primary" type="submit" name="llcw_submit" value="<?php esc_attr_e('Save'); ?>" />
+						<input class="button button-primary" type="submit" name="llcw_submit" value="<?php esc_attr_e('Save Changes'); ?>" />
 					</th>
 				</tr>
 			</tbody>
