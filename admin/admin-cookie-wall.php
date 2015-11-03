@@ -37,7 +37,7 @@ class Admin_Cookie_Wall {
 		$settings = get_option( 'llcw_settings' );
 
 		if( isset( $_POST['llcw_description'] ) ) {
-			$settings['description'] = $_POST['llcw_description'];
+			$settings['description'] =  $_POST['llcw_description'];
 		}
 		if( isset( $_POST['image_url'] ) ) {
 			$settings['image_url'] = $_POST['image_url'];
@@ -46,13 +46,13 @@ class Admin_Cookie_Wall {
 			$settings['logo'] = $_POST['logo'];
 		}
 		if( isset( $_POST['llcw_title'] ) ) {
-			$settings['title'] = $_POST['llcw_title'];
+			$settings['title'] = sanitize_text_field( $_POST['llcw_title'] );
 		}
 		if( isset( $_POST['llcw_btn_text'] ) ) {
-			$settings['button_text'] = $_POST['llcw_btn_text'];
+			$settings['button_text'] =sanitize_text_field( $_POST['llcw_btn_text'] );
 		}
 		if( isset( $_POST['llcw_readmore_text'] ) ) {
-			$settings['readmore_text'] = $_POST['llcw_readmore_text'];
+			$settings['readmore_text'] = sanitize_text_field( $_POST['llcw_readmore_text'] );
 		}
 		if( isset( $_POST['llcw_tracking_code'] ) ) {
 			$settings['tracking_code'] = $_POST['llcw_tracking_code'];
