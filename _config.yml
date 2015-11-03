@@ -24,7 +24,5 @@ sass:
     style: compressed
 
 collections:
-  features:
-    output: true
-  steps:
-    output: true
+  - features
+  - steps
