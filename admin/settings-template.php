@@ -73,7 +73,6 @@ if( isset( $cookie_wall_options['blurry_background'] ) ) {
 }
 
 wp_enqueue_script('jquery');
-wp_enqueue_media();
 
 $tiny_mce_settings = array(
 	'text_area_name'=>'extra_content',//name you want for the textarea
