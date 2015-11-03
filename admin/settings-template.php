@@ -127,7 +127,7 @@ $tiny_mce_settings = array(
 			<tbody>
 				<tr>
 					<th scope="row">
-						<label for="logo"><?php echo esc_html__( "Logo - optional", $plugin_text_domain ) ?></label>
+						<label for="logo"><?php echo esc_html__( "Logo", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
 						<input type="text" name="logo" value="<?php echo esc_attr($logo); ?>" id="logo" class="regular-text">
@@ -138,7 +138,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
+						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ).' *' ?></label>
 					</th>
 					<td>
 						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" required />
@@ -146,7 +146,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label><?php echo esc_html__( "Cookies description", $plugin_text_domain ) ?></label>
+						<label><?php echo esc_html__( "Cookies description", $plugin_text_domain ).' *' ?></label>
 					</th>
 					<td>
 
@@ -158,7 +158,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ) ?></label>
+						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ).' *' ?></label>
 					</th>
 					<td>
 						<input class="regular-text" id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" required />
@@ -166,7 +166,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
+						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ).' *' ?></label>
 					</th>
 					<td>
 						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" required />
@@ -174,7 +174,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code - optional", $plugin_text_domain ) ?></label>
+						<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
 						<input class="regular-text" id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
@@ -184,7 +184,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="image_url"><?php echo esc_html__( "Background image - optional", $plugin_text_domain ) ?></label>
+						<label for="image_url"><?php echo esc_html__( "Background image", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
 						<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
@@ -206,6 +206,8 @@ $tiny_mce_settings = array(
 				<tr>
 					<th scope="row">
 						<input class="button button-primary" type="submit" name="llcw_submit" value="<?php esc_attr_e('Save Changes'); ?>" />
+						<span class="description">* Required</span>
+
 					</th>
 				</tr>
 			</tbody>
