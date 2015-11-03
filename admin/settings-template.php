@@ -93,24 +93,29 @@ $tiny_mce_settings = array(
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
 						?><h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
-						<p class="explanation"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
-					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></p>
+						<span class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
+					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></span>
+						<br>
 						<textarea cols="130" rows="18" ><?php echo $htaccess_content; ?></textarea><?php
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
 						?><h4><?php echo esc_html__( 'You are using an Nginx server', $plugin_text_domain ) ?></h4>
-						<p class="explanation"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
-					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
+						<span class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
+					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></span>
+						<br>
 						<textarea cols="130" rows="5" ><?php echo $nginx_content; ?></textarea><?php
 					}
 				} else {
 					if ( ! empty( $htaccess_content ) || ! empty( $nginx_content ) ) {
 						?>
 						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
-						<p class="explanation"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></p>
+						<span class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></span>
+						<br>
 						<textarea cols="130" rows="18"><?php echo $htaccess_content; ?></textarea>
-						<p class="explanation"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></p>
+						<br>
+						<span class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></span>
+						<br>
 						<textarea cols="130" rows="5"><?php echo $nginx_content; ?></textarea><?php
 					}
 				}?>
@@ -119,47 +124,93 @@ $tiny_mce_settings = array(
 	?>
 	<form method="post">
 		<input type="hidden" name="page" value="ll-cookie-wall-settings" />
-		<p>
-			<label for="logo"><?php echo esc_html__( "Logo - optional", $plugin_text_domain ) ?></label><br>
-			<p class="explanation" ><?php echo esc_html__( "If provided, this image will appear above the title.", $plugin_text_domain ) ?></p>
-			<input type="text" name="logo" value="<?php echo esc_attr($logo); ?>" id="logo" class="regular-text">
-			<input type="button" name="upload-btn" id="upload-btn2" class="button-secondary" value="Upload Image">
-		</p>
-		<p>
-			<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label><br>
-			<input id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
-		</p>
-		<p>
-			<label><?php echo esc_html__( "Cookies description", $plugin_text_domain ) ?></label><br>
-			<p class="explanation" ><?php echo esc_html__( "By European law, you must inform your visitors about all the cookies you have implemented in your website.", $plugin_text_domain ) ?></p>
-			<p class="explanation" ><?php echo esc_html__( "Extra info can be inserted below a [read-more] tag in the content.", $plugin_text_domain ) ?></p>
-			<?php wp_editor( $description, 'llcw_description', $tiny_mce_settings ); ?>
-		</p>
-		<p>
-			<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ) ?></label><br>
-			<input id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" />
-		</p>
-		<p>
-			<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label><br>
-			<input id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
-		</p>
-		<p>
-			<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code - optional", $plugin_text_domain ) ?></label><br>
-			<p class="explanation" ><?php echo esc_html__( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", $plugin_text_domain ) ?></p>
-			<input id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
-		</p>
-		<p>
-			<label for="image_url"><?php echo esc_html__( "Background image", $plugin_text_domain ) ?></label><br>
-			<p class="explanation" ><?php echo esc_html__( "Add a background image for your Cookie Wall page, this plugin will make the image blurry. ", $plugin_text_domain ) ?></p>
-			<p class="explanation" ><?php echo esc_html__( "For a better looking page, just capture a screenshot of your homepage with a resolution of about 1000px X 1200px.", $plugin_text_domain ) ?></p>
-			<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
-			<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
-		</p>
-		<p>
-			<label for="blurry"><?php echo esc_html__( "Make background image blurry", $plugin_text_domain ) ?></label><br>
-			<p class="explanation" ><?php echo esc_html__( "Enable if you want a blurry background (only on newer browsers with CSS3)", $plugin_text_domain ) ?></p>
-			<input id="blurry" type="checkbox" <?php if( $blurry_background == '1' ) { echo "checked"; } ?> name="llcw_blurry_background" value="1" />
-		</p>
+		<table class="form-table">
+			<tbody>
+				<tr>
+					<th scope="row">
+						<label for="logo"><?php echo esc_html__( "Logo - optional", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input type="text" name="logo" value="<?php echo esc_attr($logo); ?>" id="logo" class="regular-text">
+						<input type="button" name="upload-btn" id="upload-btn2" class="button-secondary" value="<?php esc_attr_e('Upload Image'); ?>">
+						<br>
+						<span class="description" ><?php echo esc_html__( "If provided, this image will appear above the title.", $plugin_text_domain ) ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label><?php echo esc_html__( "Cookies description", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+
+						<?php wp_editor( $description, 'llcw_description', $tiny_mce_settings ); ?>
+						<br>
+						<span class="description" ><?php echo esc_html__( "By European law, you must inform your visitors about all the cookies you have implemented in your website.", $plugin_text_domain ) ?></span>
+						<span class="description" ><?php echo esc_html__( "Extra info can be inserted below a [read-more] tag in the content.", $plugin_text_domain ) ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code - optional", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
+						<br>
+						<span class="description" ><?php echo esc_html__( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", $plugin_text_domain ) ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="image_url"><?php echo esc_html__( "Background image", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
+						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php esc_attr_e('Upload Image'); ?>">
+						<br>
+						<span class="description" ><?php echo esc_html__( "Add a background image for your Cookie Wall page, this plugin will make the image blurry. ", $plugin_text_domain ) ?></span>
+						<span class="description" ><?php echo esc_html__( "For a better looking page, just capture a screenshot of your homepage with a resolution of about 1000px X 1200px.", $plugin_text_domain ) ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="blurry"><?php echo esc_html__( "Make background image blurry", $plugin_text_domain ) ?></label>
+					</th>
+					<td>
+						<input id="blurry" type="checkbox" <?php if( $blurry_background == '1' ) { echo "checked"; } ?> name="llcw_blurry_background" value="1" />
+						<span class="description" ><?php echo esc_html__( "Enable if you want a blurry background (only on newer browsers with CSS3)", $plugin_text_domain ) ?></span>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<input class="button button-primary" type="submit" name="llcw_submit" value="<?php esc_attr_e('Save'); ?>" />
+					</th>
+				</tr>
+			</tbody>
+		</table>
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 				$('#upload-btn').click(function(e) {
@@ -193,8 +244,5 @@ $tiny_mce_settings = array(
 				});
 			});
 		</script>
-		<p>
-			<input class="button button-primary" type="submit" name="llcw_submit" value="Save" />
-		</p>
 	</form>
 </div>
