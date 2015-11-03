@@ -33,9 +33,9 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 				-moz-border-radius: 10px;
 				border-radius: 10px;
 
-				-webkit-box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
-				-moz-box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
-				box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
+				-webkit-box-shadow: 0 0 27px -2px rgba(0,0,0,0.5);
+				-moz-box-shadow: 0 0 27px -2px rgba(0,0,0,0.5);
+				box-shadow: 0 0 27px -2px rgba(0,0,0,0.5);
 			}
 			body.ll_cookie_wall main section {
 				padding: 20px;
@@ -112,7 +112,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 				height: 100%;
 				width: 100%;
 				position: fixed;
-				top: 0px;
+				top: 0;
 				<?php
 					if( $blurry_background == '1' ) { ?>
 						-webkit-filter: blur(5px);
