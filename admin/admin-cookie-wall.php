@@ -79,7 +79,7 @@ class Admin_Cookie_Wall {
 			'Opera',
 			'iphone',
 			'ipad',
-			'andriod',
+			'android',
 			'blackberry',
 		];
 		$agents = implode('|', $blocked_agents);
