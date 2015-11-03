@@ -89,7 +89,7 @@ $tiny_mce_settings = array(
 		<?php
 		$server_software = '';
 		if( !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
-			<div id="llcw_server_settings_popup"><?php
+			<div class="updated" id="llcw_server_settings_popup"><?php
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
 						?><h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
@@ -142,7 +142,7 @@ $tiny_mce_settings = array(
 						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
+						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -162,7 +162,7 @@ $tiny_mce_settings = array(
 						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" />
+						<input class="regular-text" id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -170,7 +170,7 @@ $tiny_mce_settings = array(
 						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
+						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -178,7 +178,7 @@ $tiny_mce_settings = array(
 						<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code - optional", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
+						<input class="regular-text" id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
 						<br>
 						<span class="description" ><?php echo esc_html__( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", $plugin_text_domain ) ?></span>
 					</td>
