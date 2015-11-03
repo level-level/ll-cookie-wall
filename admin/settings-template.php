@@ -1,18 +1,5 @@
 <?php
-
-/*
- * Todo:
- * X Afvangen apache of nginx
- * - Nginx code schrijven
- * X Meer uitleg
- * X Wysiwyg
- * X Read-more shortcode > uitschuiven met jQuery
- * X Feedback voor background img (formaat etc.)
- * X Logo (optioneel)
- * X Multilangual
- * X Blurry background
- *
- */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $plugin_text_domain     = 'll_cookie_wall';
 

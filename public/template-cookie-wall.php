@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $cookie_wall_options = get_option( 'llcw_settings' );
 
 if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description'] ) ) {
