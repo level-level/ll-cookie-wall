@@ -59,6 +59,8 @@ RewriteRule .* /cookie-wall?url_redirect=http%1://%{HTTP_HOST}%{REQUEST_URI} [R=
 
 = nginx-config =
 
+== Screenshots ==
+1. Plugin overview
 
 == Frequently Asked Questions ==
 Have a question? Make a thread in the support forum and we will get back to you.
