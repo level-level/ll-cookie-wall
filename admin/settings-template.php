@@ -141,7 +141,7 @@ $tiny_mce_settings = array(
 						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
+						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" required />
 					</td>
 				</tr>
 				<tr>
@@ -161,7 +161,7 @@ $tiny_mce_settings = array(
 						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" />
+						<input class="regular-text" id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" required />
 					</td>
 				</tr>
 				<tr>
@@ -169,7 +169,7 @@ $tiny_mce_settings = array(
 						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
+						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" required />
 					</td>
 				</tr>
 				<tr>
@@ -184,7 +184,7 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="image_url"><?php echo esc_html__( "Background image", $plugin_text_domain ) ?></label>
+						<label for="image_url"><?php echo esc_html__( "Background image - optional", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
 						<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
