@@ -11,7 +11,8 @@
             {% for step in site.steps %}
                 <div class="guide-item">
                     <div class="example-image">
-                        <img src="{{site.baseurl}}/assets/{{step.image}}">
+                        <img src="{{site.baseurl}}/assets/{{step.image}}"
+                             alt="{{step.title}}">
                     </div>
                     <div class="step-info">
                         <h2>{{step.title}}</h2>
