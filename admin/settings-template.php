@@ -81,7 +81,7 @@ $tiny_mce_settings = array(
 						<span class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
 					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></span>
 						<br>
-						<textarea cols="130" rows="18" ><?php echo $htaccess_content; ?></textarea><?php
+						<textarea cols="130" rows="16" ><?php echo $htaccess_content; ?></textarea><?php
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
@@ -89,7 +89,7 @@ $tiny_mce_settings = array(
 						<span class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
 					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></span>
 						<br>
-						<textarea cols="130" rows="5" ><?php echo $nginx_content; ?></textarea><?php
+						<textarea cols="130" rows="15" ><?php echo $nginx_content; ?></textarea><?php
 					}
 				} else {
 					if ( ! empty( $htaccess_content ) || ! empty( $nginx_content ) ) {
@@ -97,11 +97,11 @@ $tiny_mce_settings = array(
 						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
 						<span class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></span>
 						<br>
-						<textarea cols="130" rows="18"><?php echo $htaccess_content; ?></textarea>
+						<textarea cols="130" rows="16"><?php echo $htaccess_content; ?></textarea>
 						<br>
 						<span class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></span>
 						<br>
-						<textarea cols="130" rows="5"><?php echo $nginx_content; ?></textarea><?php
+						<textarea cols="130" rows="15"><?php echo $nginx_content; ?></textarea><?php
 					}
 				}?>
 			</div><?php
@@ -117,7 +117,7 @@ $tiny_mce_settings = array(
 					</th>
 					<td>
 						<input type="text" name="logo" value="<?php echo esc_attr($logo); ?>" id="logo" class="regular-text">
-						<input type="button" name="upload-btn" id="upload-btn2" class="button-secondary" value="<?php esc_attr_e('Upload Image'); ?>">
+						<input type="button" name="upload-btn" id="upload-btn2" class="button-secondary" value="<?php esc_attr_e('Upload Image', $plugin_text_domain); ?>">
 						<br>
 						<span class="description" ><?php echo esc_html__( "If provided, this image will appear above the title.", $plugin_text_domain ) ?></span>
 					</td>
@@ -174,7 +174,7 @@ $tiny_mce_settings = array(
 					</th>
 					<td>
 						<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
-						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php esc_attr_e('Upload Image'); ?>">
+						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php esc_attr_e('Upload Image', $plugin_text_domain); ?>">
 						<br>
 						<span class="description" ><?php echo esc_html__( "Add a background image for your Cookie Wall page, this plugin will make the image blurry. ", $plugin_text_domain ) ?></span>
 						<span class="description" ><?php echo esc_html__( "For a better looking page, just capture a screenshot of your homepage with a resolution of about 1000px X 1200px.", $plugin_text_domain ) ?></span>
