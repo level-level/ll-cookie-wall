@@ -6,8 +6,6 @@ class Admin_Cookie_Wall {
 		if( isset( $_GET['page'] ) ) {
 			if( $_GET['page'] == 'll-cookie-wall-settings' ) {
 
-				add_action('admin_head', array( $this, 'custom_admin_styles' ) );
-
 				if ( isset( $_POST['llcw_submit'] ) ) {
 					$this->save_settings();
 				}
@@ -15,15 +13,6 @@ class Admin_Cookie_Wall {
 		}
 
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
-	}
-
-	public function custom_admin_styles() {
-		$stylesheet_path = plugin_dir_path( __FILE__ ) . 'style.css';
-		if( file_exists( $stylesheet_path ) ) {
-			echo "<style>";
-			include_once( $stylesheet_path );
-			echo "</style>";
-		}
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
