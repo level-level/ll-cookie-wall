@@ -159,7 +159,7 @@ class Admin_Cookie_Wall {
 
 		$content = '
 		set $ll_cookie_exist \'0\';
-		if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|andriod|blackberry)\' ) { 
+		if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|android|blackberry)\' ) { 
 			set $ll_cookie_exist \'1\';
 		}
 		if ( $http_cookie ~ "ll_cookie_wall=ll_cookie_wall" ) { 
