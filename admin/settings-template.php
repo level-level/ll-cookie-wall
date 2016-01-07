@@ -207,7 +207,6 @@ $tiny_mce_settings = array(
 					}).open()
 						.on('select', function(e){
 							var uploaded_image = image.state().get('selection').first();
-							console.log(uploaded_image);
 							var image_url = uploaded_image.toJSON().url;
 							$('#image_url').val(image_url);
 						});
@@ -223,7 +222,6 @@ $tiny_mce_settings = array(
 					}).open()
 						.on('select', function(e){
 							var uploaded_image = image.state().get('selection').first();
-							console.log(uploaded_image);
 							var image_url = uploaded_image.toJSON().url;
 							$('#logo').val(image_url);
 						});
