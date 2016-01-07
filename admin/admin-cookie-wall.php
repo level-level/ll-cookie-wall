@@ -126,14 +126,14 @@ class Admin_Cookie_Wall {
 		$url = wp_nonce_url(admin_url('options-general.php?page=ll-cookie-wall-settings'));
 		if ( false === ($creds = request_filesystem_credentials($url, '', false, false, null) ) ) {
 			$_POST['htaccess_content'] = $new_htaccess;
-			$_POST['nginx_content']     = $new_nginx;
+			$_POST['nginx_content']    = $new_nginx;
 			return; // stop processing here
 		}
 
 		// Check filesystem creds
 		if(!WP_Filesystem($creds)) {
 			$_POST['htaccess_content'] = $new_htaccess;
-			$_POST['nginx_content']     = $new_nginx;
+			$_POST['nginx_content']    = $new_nginx;
 			return false;
 		}
 
@@ -142,8 +142,8 @@ class Admin_Cookie_Wall {
 		$htaccess_path = $root . '.htaccess';
 
 		if( !$wp_filesystem->exists($root . '.htaccess') ) {
-			$_POST['htaccess_content']  = $new_htaccess;
-			$_POST['nginx_content']     = $new_nginx;
+			$_POST['htaccess_content'] = $new_htaccess;
+			$_POST['nginx_content']    = $new_nginx;
 			return;
 		}
 
