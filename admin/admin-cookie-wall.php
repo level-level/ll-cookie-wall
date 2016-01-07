@@ -59,7 +59,7 @@ class Admin_Cookie_Wall {
 	}
 
 	private function create_htaccess(){
-		$blocked_agents = [
+		$blocked_agents = array (
 			'Internet\ Explorer',
 			'MSIE',
 			'Chrome',
@@ -70,8 +70,8 @@ class Admin_Cookie_Wall {
 			'iphone',
 			'ipad',
 			'android',
-			'blackberry',
-		];
+			'blackberry'
+		);
 		$agents = implode('|', $blocked_agents);
 
 		$new_htaccess = "# BEGIN Cookie Rewrite\n";
@@ -112,6 +112,7 @@ class Admin_Cookie_Wall {
 		$new_nginx      = $this->create_nginx_rules();
 
 		// Get filesystem creds
+
 		$url = wp_nonce_url(admin_url('options-general.php?page=ll-cookie-wall-settings'));
 		if ( false === ($creds = request_filesystem_credentials($url, '', false, false, null) ) ) {
 			$_POST['htaccess_content'] = $new_htaccess;

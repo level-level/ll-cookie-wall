@@ -22,9 +22,11 @@ $server_software        = '';
 $blurry_background      = '';
 
 if( isset( $_SERVER["SERVER_SOFTWARE"] ) && !empty( $_SERVER["SERVER_SOFTWARE"] ) ) {
-	if ( strpos( $_SERVER["SERVER_SOFTWARE"],'nginx' ) !== false ) {
+	$server =  strtolower($_SERVER["SERVER_SOFTWARE"]);
+
+	if ( strpos( $server ,'nginx' ) !== false ) {
 		$server_software = 'nginx';
-	} else if ( strpos( $_SERVER["SERVER_SOFTWARE"],'apache' ) !== false ) {
+	} else if ( strpos( $server, 'apache' ) !== false ) {
 		$server_software = 'apache';
 	}
 }
