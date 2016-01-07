@@ -24,13 +24,18 @@ class Public_Cookie_Wall {
 	}
 
 	public function custom_fold( $content, $readmore, $button_txt ) {
+		$is_readmore = strpos($content,'[read-more]');
 		$exploded = explode( '[read-more]', $content );
 
 		$button = '<form method="POST" id="ll_cookie_form">
 						<input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies" value="'.$button_txt.'" />
 					</form>';
 
-		if( is_array( $exploded ) && isset( $exploded[1] ) ) {
+		if(!$is_readmore) {
+			$content .= $button;
+		}
+
+		if( is_array( $exploded ) && isset( $exploded[1] ) && $is_readmore) {
 			$content = $exploded[0];
 			$content .= $button;
 			$content .= '<a id="expand_description">'. $readmore .'</a>';

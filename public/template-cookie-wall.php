@@ -137,8 +137,8 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 			</section>
 		</main>
 		<footer>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
 			<script type="text/javascript">
 				/*!
 				 * jQuery Cookie Plugin v1.4.1
