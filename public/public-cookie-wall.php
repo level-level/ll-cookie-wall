@@ -24,6 +24,7 @@ class Public_Cookie_Wall {
 	}
 
 	public function custom_fold( $content, $readmore, $button_txt ) {
+		$content = htmlspecialchars_decode($content);
 		$is_readmore = strpos($content,'[read-more]');
 		$exploded = explode( '[read-more]', $content );
 
