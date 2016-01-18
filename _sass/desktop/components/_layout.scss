@@ -29,8 +29,7 @@
       position: absolute;
       right: 0;
       height: 100%;
-      //float: right;
-      //width: 50%;
+
       background-size: 110%;
       background-position: 0 29%;
       z-index: -1;
@@ -42,14 +41,21 @@
       width: 50%;
       padding: 8% 5%;
       margin: 0;
-
+      span.logo {
+        position: absolute;
+        display: block;
+        margin: 0;
+      }
       .button {
         float: left;
       }
+      h1 {
+        margin-left: 75px;
+      }
       h1, p {
-        margin: 0;
         vertical-align: middle;
         padding-bottom: 25px;
+        margin-bottom: 0;
       }
       p {
         width: 100%;

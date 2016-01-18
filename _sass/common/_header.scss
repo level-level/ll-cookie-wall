@@ -23,9 +23,11 @@
     width: 100%;
     background-color: $green;
   }
-
+  
   .site-title {
     font-size: $site-title;
+    margin-bottom: 0;
+
     .home-link {
       color: $text-color;
       &:hover {
@@ -33,7 +35,6 @@
         text-decoration: none;
       }
     }
-    margin-bottom: 0;
   }
   .subtitle {
     font-weight: $font-weight-base;
