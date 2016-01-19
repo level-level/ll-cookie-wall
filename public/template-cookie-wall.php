@@ -178,6 +178,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					<img id="logo" src="<?php echo esc_url( $logo ); ?>" alt="logo"/>
 				<?php } ?>
 				<h1><?php echo esc_html( $title ); ?></h1>
+				<?php if( empty($readmore_text)) $readmore_text = __('Read more'); ?>
 				<p><?php echo apply_filters( "the_content", $description, $readmore_text, $button_text ); ?></p>
 			</section>
 		</main>

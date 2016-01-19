@@ -125,10 +125,10 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ).' *' ?></label>
+						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" required />
+						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -153,10 +153,10 @@ $tiny_mce_settings = array(
 				</tr>
 				<tr>
 					<th scope="row">
-						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ).' *' ?></label>
+						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" required />
+						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
 					</td>
 				</tr>
 				<tr>

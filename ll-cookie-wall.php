@@ -8,6 +8,7 @@
     Author URI: http://level-level.com
     Text Domain: ll-cookie-wall
  */
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class LL_Cookie_Wall {
