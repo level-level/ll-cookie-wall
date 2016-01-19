@@ -61,7 +61,7 @@ class Admin_Cookie_Wall {
 	private function create_htaccess(){
 
 		$plugin_admin_path      = plugin_dir_path( __FILE__ );
-		$nginx_config_path      = $plugin_admin_path . 'config_files/htaccess.conf';
+		$nginx_config_path      = $plugin_admin_path . 'config_files/.htaccess';
 
 		if( !is_dir( $plugin_admin_path . '/config_files' ) ) {
 			mkdir( $plugin_admin_path . '/config_files' );
