@@ -102,7 +102,7 @@ class Admin_Cookie_Wall {
 		$new_htaccess .= "RewriteCond %{HTTP_COOKIE} !^.*ll_cookie_wall.*\n";
 		$new_htaccess .= "RewriteCond %{REQUEST_URI} !index.php\n";
 		$new_htaccess .= "RewriteCond %{REQUEST_FILENAME} !-f\n";
-		$new_htaccess .= "RewriteCond %{REQUEST_FILENAME} !-d\n";
+//		$new_htaccess .= "RewriteCond %{REQUEST_FILENAME} !-d\n"; //not working with subdirectories
 		$new_htaccess .= "RewriteCond %{HTTP_USER_AGENT} {$agents} \n";
 		$new_htaccess .= "RewriteRule .* /cookie-wall?url_redirect=http%1://%{HTTP_HOST}%{REQUEST_URI} [R=302,L] \n";
 
