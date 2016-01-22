@@ -44,19 +44,6 @@ class LL_Cookie_Wall {
 	}
 
 	public function cookiewall_deactivate(){
-		$server_software = '';
-
-		if( !isset( $_SERVER["SERVER_SOFTWARE"]) && empty( $_SERVER["SERVER_SOFTWARE"]))
-			return;
-
-		if ( strpos(strtolower($_SERVER["SERVER_SOFTWARE"])	, 'apache' ) !== false ) {
-			$server_software = 'apache';
-		}
-
-		if ( $server_software !== "apache" )
-			return;
-
-
 		$file = ABSPATH . '.htaccess';
 		$current = file_get_contents($file);
 
