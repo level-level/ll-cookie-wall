@@ -23,11 +23,12 @@ class LL_Cookie_Wall {
 			new Public_Cookie_Wall();
 		}
 
-
 		if ( isset( $_SERVER["SERVER_SOFTWARE"] ) && ! empty( $_SERVER["SERVER_SOFTWARE"] ) ) {
 			$server = strtolower( $_SERVER["SERVER_SOFTWARE"] );
 			if ( strpos( $server, 'nginx' ) !== false ) {
-				add_action( 'admin_notices', array( $this, 'cookiewall_admin_notice' ) );
+				if(in_array( $GLOBALS['pagenow'], array( 'plugins.php' ) )) {
+					add_action( 'admin_notices', array( $this, 'cookiewall_admin_notice' ) );
+				}
 			} else if ( strpos( $server, 'apache' ) !== false ) {
 				register_deactivation_hook( __FILE__, array( $this, 'cookiewall_deactivate' ) );
 			}
