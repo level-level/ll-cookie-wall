@@ -12,8 +12,8 @@ description:
   The Cookie Wall for WordPress is a plugin to comply with the EU law. Instead of offering a way to
   continue browsing without cookies, which possibly means loss of income for publishers, this cookie
   wall only accepts a confirmation.
-baseurl: "/ll-cookie-wall" # the subpath of your site, e.g. /blog
-url: "http://level-level.github.io/ll-cookie-wall/" # the base hostname & protocol for your site
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "http://cookiewallforwp.com/" # the base hostname & protocol for your site
 twitter_username: levellevel
 
 # Build settings
