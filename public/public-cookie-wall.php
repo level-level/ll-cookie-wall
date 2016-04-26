@@ -5,7 +5,7 @@ class Public_Cookie_Wall {
 
 		add_action( 'init', array( $this, 'custom_redirect' ) );
 		add_action( 'parse_request', array( $this, 'custom_parse_request' ) );
-		add_filter( 'the_content', array( $this, 'custom_fold' ), 10, 3 );
+		add_filter( 'll_the_content', array( $this, 'custom_fold' ), 10, 3 );
 
 		$domain = '.'.$_SERVER['SERVER_NAME'];
 
