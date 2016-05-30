@@ -16,7 +16,7 @@ class Admin_Cookie_Wall {
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
-		add_submenu_page( 'options-general.php', 'Cookie Wall for WordPress', 'Cookie Wall for WordPress', 'manage_options', 'll-cookie-wall-settings', array( $this, 'll_cookie_wall_page_callback' ) );
+		add_submenu_page( 'options-general.php', 'Cookie Wall for WordPress', 'Cookie Wall for WP', 'manage_options', 'll-cookie-wall-settings', array( $this, 'll_cookie_wall_page_callback' ) );
 	}
 
 	public function ll_cookie_wall_page_callback() {
