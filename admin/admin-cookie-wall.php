@@ -39,7 +39,7 @@ class Admin_Cookie_Wall {
 			$settings['title'] = sanitize_text_field( $_POST['llcw_title'] );
 		}
 		if( isset( $_POST['llcw_btn_text'] ) ) {
-			$settings['button_text'] =sanitize_text_field( $_POST['llcw_btn_text'] );
+			$settings['button_text'] = sanitize_text_field( $_POST['llcw_btn_text'] );
 		}
 		if( isset( $_POST['llcw_readmore_text'] ) ) {
 			$settings['readmore_text'] = sanitize_text_field( $_POST['llcw_readmore_text'] );
@@ -84,7 +84,7 @@ class Admin_Cookie_Wall {
 
 		$new_htaccess = "# BEGIN Cookie Rewrite\n";
 		$new_htaccess .= "<IfModule mod_rewrite.c>\n";
-		
+
 		$new_htaccess .= "RewriteEngine On\n";
 
 		// Homepage
@@ -148,7 +148,7 @@ class Admin_Cookie_Wall {
 		}
 
 		$orginal_htaccess = $wp_filesystem->get_contents($htaccess_path);
-		
+
 		// Remove Cookie rewrites
 		$orginal_htaccess = preg_replace('/(\# BEGIN Cookie Rewrite.*\# END Cookie Rewrite)/s', '', $orginal_htaccess);
 		$orginal_htaccess = trim($orginal_htaccess);
