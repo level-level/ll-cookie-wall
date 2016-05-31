@@ -31,7 +31,7 @@ By European law, you must inform your visitors about all the cookies that may be
 The look and feel of the Cookie Wall can be fully adjusted to the look and feel of your website.
 
 == Installation ==
-1. Upload 'll-cookie-wall' to the '/wp-content/plugins/' directory
+1. Upload 'll-cookie-wall' to the '/wp-content/plugins/' directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the \'Plugins\' menu in WordPress
 3. On the options page you can configure your Cookie Wall.
 
