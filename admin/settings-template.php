@@ -89,10 +89,10 @@ $tiny_mce_settings = array(
 						?><h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
 						<p><?php echo esc_html__( "Notice! By deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
 						WordPress doesn\n't have access to do this automatically.", $plugin_text_domain ) ?></p>
-						<span class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
-					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></span>
+						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
+					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
 						<br>
-						<textarea cols="130" rows="15" ><?php echo $nginx_content; ?></textarea><br>
+						<textarea cols="130" rows="17" ><?php echo $nginx_content; ?></textarea>
 						<?php
 					}
 				} else {
@@ -108,6 +108,8 @@ $tiny_mce_settings = array(
 						<textarea cols="130" rows="15"><?php echo $nginx_content; ?></textarea><?php
 					}
 				}?>
+			<br>
+			<br>
 			</div><?php
 		}
 	?>
