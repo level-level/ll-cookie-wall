@@ -3,12 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Admin_Cookie_Wall {
 	public function __construct() {
-		if( isset( $_GET['page'] ) ) {
-			if( $_GET['page'] == 'll-cookie-wall-settings' ) {
-
-				if ( isset( $_POST['llcw_submit'] ) ) {
-					$this->save_settings();
-				}
+		if( isset( $_GET['page'] ) && 'll-cookie-wall-settings' == $_GET['page'] ) {
+			if ( isset( $_POST['llcw_submit'] ) ) {
+				$this->save_settings();
 			}
 		}
 
