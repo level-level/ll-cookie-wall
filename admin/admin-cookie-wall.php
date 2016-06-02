@@ -60,8 +60,8 @@ class Admin_Cookie_Wall {
 
 	private function create_htaccess(){
 
-		$plugin_admin_path      = plugin_dir_path( __FILE__ );
-		$nginx_config_path      = $plugin_admin_path . 'config_files/.htaccess';
+		$plugin_admin_path  = plugin_dir_path( __FILE__ );
+		$config_path      	= $plugin_admin_path . 'config_files/.htaccess';
 
 		if( !is_dir( $plugin_admin_path . '/config_files' ) ) {
 			mkdir( $plugin_admin_path . '/config_files' );
@@ -109,7 +109,7 @@ class Admin_Cookie_Wall {
 		$new_htaccess .= "</IfModule>\n";
 		$new_htaccess .= "# END Cookie Rewrite\n\n\n";
 
-		file_put_contents( $nginx_config_path, $new_htaccess );
+		file_put_contents( $config_path, $new_htaccess );
 
 		return $new_htaccess;
 	}
@@ -160,8 +160,8 @@ class Admin_Cookie_Wall {
 	}
 
 	private function create_nginx_rules() {
-		$plugin_admin_path      = plugin_dir_path( __FILE__ );
-		$nginx_config_path      = $plugin_admin_path . 'config_files/nginx.conf';
+		$plugin_admin_path	= plugin_dir_path( __FILE__ );
+		$config_path      	= $plugin_admin_path . 'config_files/nginx.conf';
 
 		if( !is_dir( $plugin_admin_path . '/config_files' ) ) {
 			mkdir( $plugin_admin_path . '/config_files' );
