@@ -163,7 +163,6 @@ class Admin_Cookie_Wall {
 		if( !is_dir( $plugin_admin_path . '/config_files' ) ) {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
-		$host = $_SERVER['HTTP_HOST'];
 
 		$content = '
 		set $ll_cookie_exist \'0\';
@@ -180,7 +179,7 @@ class Admin_Cookie_Wall {
 		    set $ll_cookie_exist \'0\';
 		}
 		if ( $ll_cookie_exist = \'1\' ) { 
-			return 302 http://'.$host.'/cookie_wall?url_redirect=$scheme://$host$request_uri; 
+			return 302 http://$host/cookie_wall?url_redirect=$scheme://$host$request_uri; 
 		}
 		';
 
