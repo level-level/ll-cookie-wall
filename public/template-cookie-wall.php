@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $cookie_wall_options = get_option( 'llcw_settings' );
 
 if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description'] ) ) {
@@ -7,7 +7,6 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 	$title              = $cookie_wall_options['title'];
 	$button_text        = $cookie_wall_options['button_text'];
 	$readmore_text      = $cookie_wall_options['readmore_text'];
-	$page_url           = $cookie_wall_options['page_url'];
 	$tracking_code      = $cookie_wall_options['tracking_code'];
 	$logo               = $cookie_wall_options['logo'];
 	$blurry_background  = $cookie_wall_options['blurry_background'];
@@ -15,252 +14,178 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 <!DOCTYPE html>
 <html>
 	<head>
-<!--		<link href="--><?php //echo plugin_dir_url( __FILE__ ); ?><!--assets/style.css" rel="stylesheet" type="text/css" />-->
-		<style >
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<?php if(!empty($title)) : ?>
+		<title> <?php echo esc_html($title); ?> </title>
+		<?php endif; ?>
+
+		<style>
+			/* Mobile first */
 			body.ll_cookie_wall {
-				font-family: arial, sans-serif;
-				font-size: 15px;
-				color: #555;
+				font-family: Arial, Helvetica, sans-serif;
+				color: #3A3A3A;
 			}
-			body.ll_cookie_wall main {
-				display:block;
-				overflow-y: hidden;
-				background: white;
-				border: 1px solid #f2f2f2;
-				max-width: 600px;
-				position: relative;
-				margin: 50px auto 0;
 
-				-webkit-border-radius: 10px;
-				-moz-border-radius: 10px;
-				border-radius: 10px;
-
-				-webkit-box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
-				-moz-box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
-				box-shadow: 0px 0px 27px -2px rgba(0,0,0,0.5);
-			}
 			body.ll_cookie_wall main section {
-				padding: 20px;
+				position: relative;
+				overflow-y: hidden;
+
+				margin: 0 auto;
+				padding: 25px;
+				background-color: #fff;
+				display: block;
+				width: 100%;
+
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
 			}
+			body.ll_cookie_wall main section img#logo {
+				max-width: 200px;
+			}
+			body.ll_cookie_wall main section h1 {
+				margin-bottom: 15px;
+			}
+
+			body.ll_cookie_wall main section h2 {
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			body.ll_cookie_wall main section h3 {
+				font-size: 16px;
+				margin-bottom: 5px;
+			}
+
+			body.ll_cookie_wall main section p {
+				font-size: 15px;
+				line-height: 24px;
+				margin-top: 0;
+				margin-bottom: 15px;
+			}
+			body.ll_cookie_wall main section p:first-child {
+				margin-top: 30px;
+			}
+			body.ll_cookie_wall main section form {
+				margin: 35px 0 20px 0;
+			}
+			body.ll_cookie_wall main section form input {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				display: block;
+				width: 100%;
+				max-width: 250px;
+				font-weight:300;
+				font-size: 16px;
+				color: #fff;
+				background: green;
+				border: none;
+				padding: 16px 20px;
+				cursor: pointer;
+				margin: 0 auto;
+
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+			}
+			body.ll_cookie_wall main section form input:hover {
+				background-color: darkgreen;
+				-webkit-transition: background-color .3s;
+				-moz-transition: background-color .3s;
+				-ms-transition: background-color .3s;
+				-o-transition: background-color .3s;
+				transition: background-color .3s;
+			}
+
+			body.ll_cookie_wall main section a#expand_description {
+				color: #878787;
+				text-align: center;
+				text-decoration: underline;
+				display: block;
+				cursor: pointer;
+			}
+			body.ll_cookie_wall main section a#expand_description:hover {
+				color: #696969;
+				-webkit-transition: color .3s;
+				-moz-transition: color .3s;
+				-ms-transition: color .3s;
+				-o-transition: color .3s;
+				transition: color .3s;
+			}
+
 			body.ll_cookie_wall main section #llcw_read_more {
 				display: none;
 			}
-			body.ll_cookie_wall main section #llcw_read_more p {
-				margin-top: 0;
-			}
-			body.ll_cookie_wall main section #llcw_read_more p:first-child {
-				display: none;
-			}
 
-			body.ll_cookie_wall main section #expand_description {
-				color: #005fb3;
-				text-decoration: underline;
-				cursor: pointer;
-			}
-			body.ll_cookie_wall main section #logo {
-				max-width: 300px;
-				max-height: 150px;
-			}
-			body.ll_cookie_wall main section h1 {
-				font-weight: normal;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-			body.ll_cookie_wall main section a {
-				margin: 20px 0;
-				display:block;
-				width: 100%;
-			}
-			body.ll_cookie_wall main section .btn-accept {
-				background: #7DCD3E;
-				border: none;
-				padding: 10px;
-				color: white;
-				font-size: 16px;
-				cursor: pointer;
-				-webkit-border-radius: 6px;
-				-moz-border-radius: 6px;
-				border-radius: 6px;
-			}
-			body.ll_cookie_wall main section .btn-accept:hover {
-				background: #5bab1c;
-			}
-
-
-			@media screen and (max-width: 500px) {
-				body.ll_cookie_wall {
-					background: none;
-					background-color: white;
-					padding: 0;
-					margin: 0;
-					outline: 0;
-					-webkit-border-radius: 0;
-					-moz-border-radius: 0;
-					border-radius: 0;
+			body.ll_cookie_wall .background {
+			<?php
+				if( isset( $cookie_wall_options['image_url'] ) ) {
+					echo "background: url('" . $cookie_wall_options['image_url'] . "') no-repeat top center;";
 				}
-				body.ll_cookie_wall main {
-					width: 100%;
-					height: 100%;
-					margin: 0;
-				}
-			}
-
-			body .background {
-				<?php
-					if( isset( $cookie_wall_options['image_url'] ) ) {
-						echo "background: url('" . $cookie_wall_options['image_url'] . "') no-repeat top center;";
-					}
-				?>
+			?>
 				height: 100%;
 				width: 100%;
 				position: fixed;
-				top: 0px;
-				<?php
-					if( $blurry_background == '1' ) { ?>
-						-webkit-filter: blur(5px);
-						-moz-filter: blur(5px);
-						-o-filter: blur(5px);
-						-ms-filter: blur(5px);
-						filter: blur(5px); <?php
-					}
-				?>
+				top: 0;
+			<?php if( $blurry_background == '1' ) : ?>
+				-webkit-filter: blur(5px);
+				-moz-filter: blur(5px);
+				-o-filter: blur(5px);
+				-ms-filter: blur(5px);
+				filter: blur(5px);
+			<?php endif; ?>
+			}
+
+			body.ll_cookie_wall .overlay {
+				background-color: rgba(0,0,0,0.65);
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;;
+			}
+			body.ll_cookie_wall footer {
+				display: none;
+			}
+
+			/* Tablet */
+			@media (min-width: 480px) {
+				body.ll_cookie_wall main section {
+					max-width: 480px;
+					margin: 5% auto;
+					padding: 40px;
+				}
+			}
+			/* Desktop */
+			@media (min-width: 1110px) {
+				body.ll_cookie_wall main section {
+					max-width: 620px;
+				}
 			}
 		</style>
 	</head>
 	<body class="ll_cookie_wall">
 		<section class="background"></section>
+		<section class="overlay"></section>
 		<main>
 			<section>
 				<?php if( !empty( $logo ) ) { ?>
-					<img id="logo" src="<?php echo $logo; ?>" alt="logo"/>
+					<img id="logo" src="<?php echo esc_url( $logo ); ?>" alt="logo"/>
 				<?php } ?>
-				<h1><?php echo apply_filters( 'the_title', $title ); ?></h1>
-				<p><?php echo apply_filters( "the_content", $description, $readmore_text, $button_text ); ?></p>
-				<?php if( !empty( $page_url ) ) { ?>
-					<a href="<?php echo $page_url; ?>"><?php echo $readmore_text;?></a>
-				<?php } ?>
+				<h1><?php echo esc_html( $title ); ?></h1>
+				<?php if( empty($readmore_text)) $readmore_text = __('Read more'); ?>
+				<p><?php echo apply_filters( "ll_the_content", $description, $readmore_text, $button_text ); ?></p>
 			</section>
 		</main>
 		<footer>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
-			<script type="text/javascript">
-				/*!
-				 * jQuery Cookie Plugin v1.4.1
-				 * https://github.com/carhartl/jquery-cookie
-				 *
-				 * Copyright 2006, 2014 Klaus Hartl
-				 * Released under the MIT license
-				 */
-				(function (factory) {
-					if (typeof define === 'function' && define.amd) {
-						// AMD (Register as an anonymous module)
-						define(['jquery'], factory);
-					} else if (typeof exports === 'object') {
-						// Node/CommonJS
-						module.exports = factory(require('jquery'));
-					} else {
-						// Browser globals
-						factory(jQuery);
-					}
-				}(function ($) {
-
-					var pluses = /\+/g;
-
-					function encode(s) {
-						return config.raw ? s : encodeURIComponent(s);
-					}
-
-					function decode(s) {
-						return config.raw ? s : decodeURIComponent(s);
-					}
-
-					function stringifyCookieValue(value) {
-						return encode(config.json ? JSON.stringify(value) : String(value));
-					}
-
-					function parseCookieValue(s) {
-						if (s.indexOf('"') === 0) {
-							// This is a quoted cookie as according to RFC2068, unescape...
-							s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
-						}
-
-						try {
-							// Replace server-side written pluses with spaces.
-							// If we can't decode the cookie, ignore it, it's unusable.
-							// If we can't parse the cookie, ignore it, it's unusable.
-							s = decodeURIComponent(s.replace(pluses, ' '));
-							return config.json ? JSON.parse(s) : s;
-						} catch(e) {}
-					}
-
-					function read(s, converter) {
-						var value = config.raw ? s : parseCookieValue(s);
-						return $.isFunction(converter) ? converter(value) : value;
-					}
-
-					var config = $.cookie = function (key, value, options) {
-
-						// Write
-
-						if (arguments.length > 1 && !$.isFunction(value)) {
-							options = $.extend({}, config.defaults, options);
-
-							if (typeof options.expires === 'number') {
-								var days = options.expires, t = options.expires = new Date();
-								t.setMilliseconds(t.getMilliseconds() + days * 864e+5);
-							}
-
-							return (document.cookie = [
-								encode(key), '=', stringifyCookieValue(value),
-								options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-								options.path    ? '; path=' + options.path : '',
-								options.domain  ? '; domain=' + options.domain : '',
-								options.secure  ? '; secure' : ''
-							].join(''));
-						}
-
-						// Read
-
-						var result = key ? undefined : {},
-						// To prevent the for loop in the first place assign an empty array
-						// in case there are no cookies at all. Also prevents odd result when
-						// calling $.cookie().
-							cookies = document.cookie ? document.cookie.split('; ') : [],
-							i = 0,
-							l = cookies.length;
-
-						for (; i < l; i++) {
-							var parts = cookies[i].split('='),
-								name = decode(parts.shift()),
-								cookie = parts.join('=');
-
-							if (key === name) {
-								// If second argument (value) is a function it's a converter...
-								result = read(cookie, value);
-								break;
-							}
-
-							// Prevent storing a cookie that we couldn't decode.
-							if (!key && (cookie = read(cookie)) !== undefined) {
-								result[name] = cookie;
-							}
-						}
-
-						return result;
-					};
-
-					config.defaults = {};
-
-					$.removeCookie = function (key, options) {
-						// Must not alter options, thus extending a fresh object...
-						$.cookie(key, '', $.extend({}, options, { expires: -1 }));
-						return !$.cookie(key);
-					};
-
-				}));
-
-			</script>
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 			<script type="text/javascript">
 				function parseURLParams(url) {
 					var queryStart = url.indexOf("?") + 1,
