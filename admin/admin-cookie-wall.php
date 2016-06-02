@@ -183,7 +183,7 @@ class Admin_Cookie_Wall {
 		}
 		';
 
-		file_put_contents( $nginx_config_path, $content );
+		file_put_contents( $config_path, $content );
 
 		return $content;
 	}
