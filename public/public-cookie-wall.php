@@ -28,7 +28,10 @@ class Public_Cookie_Wall {
 		$is_readmore = strpos($content,'[read-more]');
 		$exploded = explode( '[read-more]', $content );
 
-		$button = '<form method="POST" id="ll_cookie_form"><input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies" value="'.$button_txt.'" /></form>';
+		$button = '<form method="POST" id="ll_cookie_form">
+					<input type="hidden" name="ll_agree_cookies" value="1" />
+					<input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies_button" value="'.$button_txt.'" />
+					</form>';
 
 		if(!$is_readmore) {
 			$content .= $button;
