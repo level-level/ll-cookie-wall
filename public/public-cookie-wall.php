@@ -14,7 +14,7 @@ class Public_Cookie_Wall {
 			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/', $domain );
 
 			if( isset( $_GET['url_redirect'] ) ) {
-				header("Location: " . $_GET['url_redirect']);
+				header("Location: " . urldecode( $_GET['url_redirect'] ) );
 				die();
 			} else {
 				header("Location: /");

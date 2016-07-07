@@ -221,7 +221,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					if( undefined == getvars || undefined == getvars.url_redirect ) {
 						var redirect_url = '/';
 					} else {
-						var redirect_url = getvars.url_redirect[0];
+						var redirect_url = encodeURIComponent( getvars.url_redirect[0] );
 					}
 
 					$("#expand_description").click(function(e) {
