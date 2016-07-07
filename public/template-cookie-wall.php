@@ -230,18 +230,18 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					});
 
 					$("#ll_cookie_form").submit(function(e){
-						e.preventDefault();
-
-						$.cookie( 'll_cookie_wall', 'll_cookie_wall', { expires: 365, path: '/', domain: domain } );
-
-						window.location.href = redirect_url;
+						ll_redirect_url();
 					});
 					$('#agree_with_cookie_terms').click(function(e) {
+						ll_redirect_url();
+					});
+
+					function ll_redirect_url() {
 						e.preventDefault();
 						$.cookie( 'll_cookie_wall', 'll_cookie_wall', { expires: 365, path: '/', domain: domain } );
 
 						window.location.href = redirect_url;
-					});
+					}
 				});
 			</script>
 			<?php if( !empty( $tracking_code ) ) { ?>
