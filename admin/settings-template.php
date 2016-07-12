@@ -1,10 +1,13 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+include_once( plugin_dir_path( __DIR__ ) . 'includes/functions.php' );
+
 $plugin_text_domain     = 'll_cookie_wall';
 
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
 $nginx_config_path      = $plugin_admin_path . 'config_files/nginx.conf';
+$apache_config_path     = $plugin_admin_path . 'config_files/.htaccess';
 
 $cookie_wall_options    = get_option( 'llcw_settings' );
 
@@ -20,6 +23,9 @@ $logo                   = '';
 $tracking_code          = '';
 $server_software        = '';
 $blurry_background      = '';
+
+$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'settings';
+
 
 if( isset( $_SERVER["SERVER_SOFTWARE"] ) && !empty( $_SERVER["SERVER_SOFTWARE"] ) ) {
 	$server =  strtolower($_SERVER["SERVER_SOFTWARE"]);
@@ -86,8 +92,9 @@ $tiny_mce_settings = array(
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
-						?><h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
-						<p><?php echo esc_html__( "Notice! By deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
+						?>
+						<h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
+						<p><?php echo esc_html__( "Notice! When deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
 						WordPress doesn\n't have access to do this automatically.", $plugin_text_domain ) ?></p>
 						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
 					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
@@ -113,127 +120,17 @@ $tiny_mce_settings = array(
 			</div><?php
 		}
 	?>
-	<form method="post">
-		<input type="hidden" name="page" value="ll-cookie-wall-settings" />
-		<table class="form-table">
-			<tbody>
-				<tr>
-					<th scope="row">
-						<label for="logo"><?php echo esc_html__( "Logo", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input type="text" name="logo" value="<?php echo esc_attr($logo); ?>" id="logo" class="regular-text">
-						<input type="button" name="upload-btn" id="upload-btn2" class="button-secondary" value="<?php esc_attr_e('Upload Image', $plugin_text_domain); ?>">
-						<br>
-						<span class="description" ><?php echo esc_html__( "If provided, this image will appear above the title.", $plugin_text_domain ) ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="title"><?php echo esc_html__( "Title", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input class="regular-text" id="title" type="text" name="llcw_title" value="<?php echo esc_attr($title); ?>" />
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label><?php echo esc_html__( "Cookies description", $plugin_text_domain ).' *' ?></label>
-					</th>
-					<td>
-
-						<?php wp_editor( $description, 'llcw_description', $tiny_mce_settings ); ?>
-						<br>
-						<span class="description" ><?php echo esc_html__( "By European law, you must inform your visitors about all the cookies you have implemented in your website.", $plugin_text_domain ) ?></span>
-						<span class="description" ><?php echo esc_html__( "Extra info can be inserted below a [read-more] tag in the content.", $plugin_text_domain ) ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="button_text"><?php echo esc_html__( "Agree button text", $plugin_text_domain ).' *' ?></label>
-					</th>
-					<td>
-						<input class="regular-text" id="button_text" type="text" name="llcw_btn_text" value="<?php echo esc_attr($button_text); ?>" required />
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="readmore_text"><?php echo esc_html__( "Read more text", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input class="regular-text" id="readmore_text" type="text" name="llcw_readmore_text" value="<?php echo esc_attr($readmore_text); ?>" />
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="analytics"><?php echo esc_html__( "Google Analytics tracking code", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input class="regular-text" id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
-						<br>
-						<span class="description" ><?php echo esc_html__( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", $plugin_text_domain ) ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="image_url"><?php echo esc_html__( "Background image", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input type="text" name="image_url" value="<?php echo esc_attr($image_url); ?>" id="image_url" class="regular-text">
-						<input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="<?php esc_attr_e('Upload Image', $plugin_text_domain); ?>">
-						<br>
-						<span class="description" ><?php echo esc_html__( "Add a background image for your Cookie Wall page, this plugin will make the image blurry. ", $plugin_text_domain ) ?></span>
-						<span class="description" ><?php echo esc_html__( "For a better looking page, just capture a screenshot of your homepage with a resolution of about 1000px X 1200px.", $plugin_text_domain ) ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label for="blurry"><?php echo esc_html__( "Make background image blurry", $plugin_text_domain ) ?></label>
-					</th>
-					<td>
-						<input id="blurry" type="checkbox" <?php if( $blurry_background == '1' ) { echo "checked"; } ?> name="llcw_blurry_background" value="1" />
-						<span class="description" ><?php echo esc_html__( "Enable if you want a blurry background (only on newer browsers with CSS3)", $plugin_text_domain ) ?></span>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<input class="button button-primary" type="submit" name="llcw_submit" value="<?php esc_attr_e('Save Changes'); ?>" />
-						<span class="description">* Required</span>
-
-					</th>
-				</tr>
-			</tbody>
-		</table>
-		<script type="text/javascript">
-			jQuery(document).ready(function($){
-				$('#upload-btn').click(function(e) {
-					e.preventDefault();
-					var image = wp.media({
-						title: 'Upload Image',
-						multiple: false
-					}).open()
-						.on('select', function(e){
-							var uploaded_image = image.state().get('selection').first();
-							var image_url = uploaded_image.toJSON().url;
-							$('#image_url').val(image_url);
-						});
-				});
-			});
-
-			jQuery(document).ready(function($){
-				$('#upload-btn2').click(function(e) {
-					e.preventDefault();
-					var image = wp.media({
-						title: 'Upload Image',
-						multiple: false
-					}).open()
-						.on('select', function(e){
-							var uploaded_image = image.state().get('selection').first();
-							var image_url = uploaded_image.toJSON().url;
-							$('#logo').val(image_url);
-						});
-				});
-			});
-		</script>
-	</form>
+	<h2 class="nav-tab-wrapper">
+		<a href="?page=ll-cookie-wall-settings&tab=settings" class="nav-tab <?php echo $active_tab == 'settings' ? 'nav-tab-active' : ''; ?>">Settings</a>
+		<a href="?page=ll-cookie-wall-settings&tab=rewrite-rules" class="nav-tab <?php echo $active_tab == 'rewrite-rules' ? 'nav-tab-active' : ''; ?>">Rewrite rules</a>
+	</h2>
+	<?php
+	if( 'settings' == $active_tab ) {
+		include_once( plugin_dir_path( __FILE__ ) . 'settings-template-form.php' );
+	}
+	if( 'rewrite-rules' == $active_tab ) {
+		include_once( plugin_dir_path( __FILE__ ) . 'settings-template-rewrite-rules.php' );
+	}
+	?>
+	<?php  ?>
 </div>

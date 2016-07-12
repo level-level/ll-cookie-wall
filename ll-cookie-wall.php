@@ -15,18 +15,38 @@ class LL_Cookie_Wall {
 	public function __construct() {
 		load_plugin_textdomain( 'll_cookie_wall', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-		add_action('init', array($this, 'load_cookiewall'));
+		add_action('init', array($this, 'plugin_init'));
+		register_deactivation_hook( __FILE__, array( 'LL_Cookie_Wall', 'plugin_deactivation' ) );
 	}
 
-	public function cookiewall_admin_notice() {
-		?>
-		<div class="notice is-dismissible error">
-			<p><?php _e( '<b>Notice!</b> Don\'t forget to remove your nginx rules and reload nginx when <b>deactivating</b> the Cookie Wall for WordPress plugin.', 'll_cookie_wall' ); ?></p>
-		</div>
-		<?php
+	public function plugin_init() {
+		if( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) ) {
+			include_once( plugin_dir_path( __FILE__ ) . 'admin/admin-cookie-wall.php' );
+			new Admin_Cookie_Wall();
+		} else {
+			include_once( plugin_dir_path( __FILE__ ) . 'public/public-cookie-wall.php' );
+			new Public_Cookie_Wall();
+		}
 	}
 
-	public function cookiewall_deactivate(){
+	/**
+	 * On deactivation remove Apache rewrite rules
+	 */
+	public static function plugin_deactivation(){
+
+		if ( ! isset( $_SERVER["SERVER_SOFTWARE"] ) && empty( $_SERVER["SERVER_SOFTWARE"] ) ) {
+			return;
+		}
+
+		$server = strtolower( $_SERVER["SERVER_SOFTWARE"] );
+		if ( strpos( $server, 'apache' ) !== false ) {
+			self::plugin_deactivation_apache();
+		}
+	}
+	/**
+	 * Remove rewrite rules from .htaccess file
+	 */
+	public static function plugin_deactivation_apache(){
 		$file = ABSPATH . '.htaccess';
 		$current = file_get_contents($file);
 
@@ -36,26 +56,7 @@ class LL_Cookie_Wall {
 		file_put_contents($file, $orginal_htaccess);
 	}
 
-	public function load_cookiewall() {
-		if( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) ) {
-			include_once( plugin_dir_path( __FILE__ ) . 'admin/admin-cookie-wall.php' );
-			new Admin_Cookie_Wall();
-		} else {
-			include_once( plugin_dir_path( __FILE__ ) . 'public/public-cookie-wall.php' );
-			new Public_Cookie_Wall();
-		}
 
-		if ( isset( $_SERVER["SERVER_SOFTWARE"] ) && ! empty( $_SERVER["SERVER_SOFTWARE"] ) ) {
-			$server = strtolower( $_SERVER["SERVER_SOFTWARE"] );
-			if ( strpos( $server, 'nginx' ) !== false ) {
-				if(in_array( $GLOBALS['pagenow'], array( 'plugins.php' ) )) {
-					add_action( 'admin_notices', array( $this, 'cookiewall_admin_notice' ) );
-				}
-			} else if ( strpos( $server, 'apache' ) !== false ) {
-				register_deactivation_hook( __FILE__, array( $this, 'cookiewall_deactivate' ) );
-			}
-		}
-	}
 }
 
 new LL_Cookie_Wall();
