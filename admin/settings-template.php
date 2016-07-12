@@ -1,6 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+include_once( plugin_dir_path( __DIR__ ) . 'includes/functions.php' );
+
 $plugin_text_domain     = 'll_cookie_wall';
 
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
