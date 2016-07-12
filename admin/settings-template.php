@@ -81,26 +81,24 @@ $tiny_mce_settings = array(
 
 		<?php
 		if( !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
-			<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible" id="llcw_server_settings_popup"><?php
+			<div id="setting-error-settings_updated" class="notice notice-info settings-error is-dismissible" id="llcw_server_settings_popup"><?php
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
 						?>
 						<h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
+						</div><!-- closing the notice box div -->
 						<p class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
 					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></p>
-						</div><!-- closing the notice box div -->
 						<textarea cols="130" rows="16" ><?php echo $htaccess_content; ?></textarea><?php
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
 						?>
 						<h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
-						<p><?php echo esc_html__( "Notice! When deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
+						<p><?php echo esc_html__( "Notice! When deactivating this plugin don't forget to remove the following Nginx rules and reload your Nginx server.
 						WordPress doesn\n't have access to do this automatically.", $plugin_text_domain ) ?></p>
-						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
-					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
-						<br>
 						</div><!-- closing the notice box div -->
+						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly. Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
 						<textarea cols="130" rows="17" ><?php echo $nginx_content; ?></textarea>
 						<?php
 					}
@@ -109,18 +107,16 @@ $tiny_mce_settings = array(
 						?>
 						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
 						<p class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></span>
-						<br>
 						<textarea cols="130" rows="16"><?php echo $htaccess_content; ?></textarea>
-						<br>
 						<p class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></p>
-						<br>
 						</div><!-- closing the notice box div -->
 						<textarea cols="130" rows="15"><?php echo $nginx_content; ?></textarea><?php
 					}
 				}?>
 			<br>
 			<br>
-			</div><?php
+			<!-- </div> this div of the notice is closed early within the if statements... -->
+			<?php
 		}
 	?>
 	<h2 class="nav-tab-wrapper">
