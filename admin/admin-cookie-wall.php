@@ -185,6 +185,11 @@ if ($request_uri ~ ^/cookie_wall\?url_redirect ) {
 	set $ll_cookie_exist \'0\';
 }
 if ($request_uri ~ ^/wp-content ) {
+    set $ll_cookie_exist \'0\';
+}
+if ( $ll_cookie_exist = \'1\' ) { 
+	return 302 http://$host/cookie_wall?url_redirect=$scheme://$host$request_uri; 
+}';
 
 		file_put_contents( $config_path, $content );
 
