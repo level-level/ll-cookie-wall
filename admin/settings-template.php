@@ -7,6 +7,7 @@ $plugin_text_domain     = 'll_cookie_wall';
 
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
 $nginx_config_path      = $plugin_admin_path . 'config_files/nginx.conf';
+$apache_config_path     = $plugin_admin_path . 'config_files/.htaccess';
 
 $cookie_wall_options    = get_option( 'llcw_settings' );
 
