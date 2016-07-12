@@ -3,13 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Admin_Cookie_Wall {
 	public function __construct() {
-		if( isset( $_GET['page'] ) && 'll-cookie-wall-settings' == $_GET['page'] ) {
-			if ( isset( $_POST['llcw_submit'] ) ) {
-				$this->save_settings();
-			}
-		}
-
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
+		$this->check_permissions();
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
@@ -20,6 +15,20 @@ class Admin_Cookie_Wall {
 		include_once( plugin_dir_path( __FILE__ ) . 'settings-template.php' );
 	}
 
+	private function check_permissions(){
+		if( ! isset( $_GET['page'] ) || 'll-cookie-wall-settings' !== $_GET['page'] ) {
+			return;
+		}
+
+		// If form is submitted check nonce and save if it passes
+		if ( isset( $_POST['llcw_submit'] ) ) {
+			check_admin_referer( 'llcw_save_settings' );
+			$this->save_settings();
+			return;
+		}
+
+
+	}
 	private function save_settings() {
 		$settings = get_option( 'llcw_settings' );
 
