@@ -84,7 +84,8 @@ $tiny_mce_settings = array(
 			<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible" id="llcw_server_settings_popup"><?php
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
-						?><h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
+						?>
+						<h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
 						<p class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
 					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></p>
 						</div><!-- closing the notice box div -->
