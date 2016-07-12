@@ -9,9 +9,8 @@
     },
     "authors": [
         {
-            "name": "Level-level",
-            "email": "info@level-level.com",
-            "homepage": "http://level-level.com/"
+            "name": "Level Level",
+            "homepage": "http://level-level.com"
         }
     ],
     "minimum-stability": "dev",
