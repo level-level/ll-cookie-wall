@@ -174,23 +174,17 @@ class Admin_Cookie_Wall {
 		}
 
 		$content = '
-		set $ll_cookie_exist \'0\';
-		if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|android|blackberry)\' ) { 
-			set $ll_cookie_exist \'1\';
-		}
-		if ( $http_cookie ~ "ll_cookie_wall=ll_cookie_wall" ) { 
-			set $ll_cookie_exist \'0\'; 
-		}
-		if ($request_uri ~ ^/cookie_wall\?url_redirect ) {
-			set $ll_cookie_exist \'0\';
-		}
-		if ($request_uri ~ ^/wp-content ) {
-		    set $ll_cookie_exist \'0\';
-		}
-		if ( $ll_cookie_exist = \'1\' ) { 
-			return 302 http://$host/cookie_wall?url_redirect=$scheme://$host$request_uri; 
-		}
-		';
+set $ll_cookie_exist \'0\';
+if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|android|blackberry)\' ) { 
+	set $ll_cookie_exist \'1\';
+}
+if ( $http_cookie ~ "ll_cookie_wall=ll_cookie_wall" ) { 
+	set $ll_cookie_exist \'0\'; 
+}
+if ($request_uri ~ ^/cookie_wall\?url_redirect ) {
+	set $ll_cookie_exist \'0\';
+}
+if ($request_uri ~ ^/wp-content ) {
 
 		file_put_contents( $config_path, $content );
 
