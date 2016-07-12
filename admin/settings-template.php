@@ -91,8 +91,9 @@ $tiny_mce_settings = array(
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
-						?><h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
-						<p><?php echo esc_html__( "Notice! By deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
+						?>
+						<h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
+						<p><?php echo esc_html__( "Notice! When deactivating this plugin don't forget to remove the following nginx rules and reload your nginx server.
 						WordPress doesn\n't have access to do this automatically.", $plugin_text_domain ) ?></p>
 						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly.
 					Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
