@@ -53,6 +53,9 @@ class Public_Cookie_Wall {
 		return $content;
 	}
 
+	/**
+	 * Check if we are on the custom rewrite rule and load the Cookie Wall template
+	 */
 	public function custom_parse_request( &$wp) {
 		if( isset( $wp->request ) ) {
 			if ( strpos( $wp->request, 'cookie-wall' ) !== false || strpos( $wp->request, 'cookie_wall' ) !== false ) {
@@ -63,6 +66,9 @@ class Public_Cookie_Wall {
 		return;
 	}
 
+	/**
+	 * Add our custom cookie-wall rewrite rule
+	 */
 	public function custom_redirect() {
 		add_rewrite_rule( 'cookie-wall', plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php', 'top' );
 	}
