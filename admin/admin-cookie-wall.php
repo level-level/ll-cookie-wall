@@ -2,6 +2,21 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Admin_Cookie_Wall {
+
+	public $blocked_agents = array (
+		'Internet\ Explorer',
+		'MSIE',
+		'Chrome',
+		'Safari',
+		'Firefox',
+		'Windows',
+		'Opera',
+		'iphone',
+		'ipad',
+		'android',
+		'blackberry'
+	);
+
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
 		$this->check_permissions();
@@ -73,20 +88,7 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
-		$blocked_agents = array (
-			'Internet\ Explorer',
-			'MSIE',
-			'Chrome',
-			'Safari',
-			'Firefox',
-			'Windows',
-			'Opera',
-			'iphone',
-			'ipad',
-			'android',
-			'blackberry'
-		);
-		$agents = implode('|', $blocked_agents);
+		$agents = implode('|', $this->blocked_agents );
 
 		$new_htaccess = "# BEGIN Cookie Rewrite\n";
 		$new_htaccess .= "<IfModule mod_rewrite.c>\n";
@@ -173,9 +175,11 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
+		$agents = implode('|', $this->blocked_agents );
+
 		$content = '
 set $ll_cookie_exist \'0\';
-if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|android|blackberry)\' ) { 
+if ( $http_user_agent ~* \'(' . $agents . ')\' ) { 
 	set $ll_cookie_exist \'1\';
 }
 if ( $http_cookie ~ "ll_cookie_wall=ll_cookie_wall" ) { 
