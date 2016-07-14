@@ -6,6 +6,7 @@ class Public_Cookie_Wall {
 		add_action( 'init', array( $this, 'custom_redirect' ) );
 		add_action( 'parse_request', array( $this, 'custom_parse_request' ) );
 		add_filter( 'll_the_content', array( $this, 'custom_fold' ), 10, 3 );
+		add_filter( 'wp_safe_redirect_fallback', array( $this, 'safe_redirect_fallback') );
 
 		$domain = '.'.$_SERVER['SERVER_NAME'];
 		$ll_agree_cookies = ( isset( $_POST['ll_agree_cookies'] ) ) ? $_POST['ll_agree_cookies'] : false;
@@ -15,7 +16,7 @@ class Public_Cookie_Wall {
 			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/', $domain );
 
 			if( isset( $_GET['url_redirect'] ) ) {
-				header("Location: " . esc_url( $_GET['url_redirect'] ) );
+				wp_safe_redirect( esc_url( $_GET['url_redirect'] ) );
 				die();
 			} else {
 				header("Location: /");
@@ -64,5 +65,12 @@ class Public_Cookie_Wall {
 
 	public function custom_redirect() {
 		add_rewrite_rule( 'cookie-wall', plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php', 'top' );
+	}
+
+	/**
+	 * Redirect to home when redirect is not safe instead to wp-admin
+	 */
+	public function safe_redirect_fallback(){
+		return get_home_url();
 	}
 }
