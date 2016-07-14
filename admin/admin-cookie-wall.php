@@ -3,20 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Admin_Cookie_Wall {
 
-	public $blocked_agents = array (
-		'Internet\ Explorer',
-		'MSIE',
-		'Chrome',
-		'Safari',
-		'Firefox',
-		'Windows',
-		'Opera',
-		'iphone',
-		'ipad',
-		'android',
-		'blackberry'
-	);
-
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
 		if( $this->check_permissions() ){
@@ -87,7 +73,7 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
-		$agents = implode('|', $this->blocked_agents );
+		$agents = implode('|', $this->get_blocked_agents() );
 
 		$new_htaccess = "# BEGIN Cookie Rewrite\n";
 		$new_htaccess .= "<IfModule mod_rewrite.c>\n";
@@ -174,7 +160,7 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
-		$agents = implode('|', $this->blocked_agents );
+		$agents = implode('|', $this->get_blocked_agents() );
 
 		$content = '
 set $ll_cookie_exist \'0\';
@@ -197,5 +183,23 @@ if ( $ll_cookie_exist = \'1\' ) { 
 		file_put_contents( $config_path, $content );
 
 		return $content;
+	}
+
+	private function get_blocked_agents(){
+		$blocked_agents = array (
+			'Internet\ Explorer',
+			'MSIE',
+			'Chrome',
+			'Safari',
+			'Firefox',
+			'Windows',
+			'Opera',
+			'iphone',
+			'ipad',
+			'android',
+			'blackberry'
+		);
+
+		return apply_filters( 'llcw_blocked_agents', $blocked_agents );
 	}
 }
