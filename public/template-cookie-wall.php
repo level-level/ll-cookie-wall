@@ -6,10 +6,11 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 	$description        = $cookie_wall_options['description'];
 	$title              = $cookie_wall_options['title'];
 	$button_text        = $cookie_wall_options['button_text'];
-	$readmore_text      = $cookie_wall_options['readmore_text'];
+	$readmore_text      = ( empty( $cookie_wall_options['readmore_text'] ) ) ? __('Read more') : $cookie_wall_options['readmore_text'];
 	$tracking_code      = $cookie_wall_options['tracking_code'];
-	$logo               = $cookie_wall_options['logo'];
+	$logo_url           = $cookie_wall_options['logo'];
 	$blurry_background  = $cookie_wall_options['blurry_background'];
+	$background_image_url = $cookie_wall_options['image_url'];
 	?>
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,8 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<?php if(!empty($title)) : ?>
-		<title> <?php echo esc_html($title); ?> </title>
+		<?php if( !empty( $title ) ) : ?>
+		<title><?php echo esc_html( $title ); ?></title>
 		<?php endif; ?>
 
 		<style>
@@ -124,15 +125,15 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 
 			body.ll_cookie_wall .background {
 			<?php
-				if( isset( $cookie_wall_options['image_url'] ) ) {
-					echo "background: url('" . $cookie_wall_options['image_url'] . "') no-repeat top center;";
+				if( !empty( $background_image_url ) ) {
+					echo "background: url('" . esc_url( $background_image_url ) . "') no-repeat top center;";
 				}
 			?>
 				height: 100%;
 				width: 100%;
 				position: fixed;
 				top: 0;
-			<?php if( $blurry_background == '1' ) : ?>
+			<?php if( intval( $blurry_background ) ) : ?>
 				-webkit-filter: blur(5px);
 				-moz-filter: blur(5px);
 				-o-filter: blur(5px);
@@ -174,11 +175,10 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 		<section class="overlay"></section>
 		<main>
 			<section>
-				<?php if( !empty( $logo ) ) { ?>
-					<img id="logo" src="<?php echo esc_url( $logo ); ?>" alt="logo"/>
+				<?php if( !empty( $logo_url ) ) { ?>
+					<img id="logo" src="<?php echo esc_url( $logo_url ); ?>" alt="logo"/>
 				<?php } ?>
 				<h1><?php echo esc_html( $title ); ?></h1>
-				<?php if( empty($readmore_text)) $readmore_text = __('Read more'); ?>
 				<p><?php echo apply_filters( "ll_the_content", $description, $readmore_text, $button_text ); ?></p>
 			</section>
 		</main>
@@ -251,7 +251,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-					ga('create', '<?php echo $tracking_code ?>', 'auto');
+					ga('create', '<?php echo esc_js( $tracking_code ) ?>', 'auto');
 					ga('set', 'anonymizeIp', true);
 					ga('send', 'pageview');
 
