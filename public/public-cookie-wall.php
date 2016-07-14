@@ -19,7 +19,7 @@ class Public_Cookie_Wall {
 				wp_safe_redirect( esc_url( $_GET['url_redirect'] ) );
 				die();
 			} else {
-				header("Location: /");
+				wp_safe_redirect( $this->safe_redirect_fallback() );
 				die();
 			}
 		}
@@ -74,7 +74,8 @@ class Public_Cookie_Wall {
 	}
 
 	/**
-	 * Redirect to home when redirect is not safe instead to wp-admin
+	 * Returns the redirect fallback url
+	 * Example: Redirects to home when redirect is not safe instead to wp-admin
 	 */
 	public function safe_redirect_fallback(){
 		return get_home_url();
