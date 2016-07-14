@@ -49,13 +49,13 @@ class Admin_Cookie_Wall {
 		$settings = get_option( 'llcw_settings' );
 
 		if( isset( $_POST['llcw_description'] ) ) {
-			$settings['description'] =  $_POST['llcw_description'];
+			$settings['description'] =  sanitize_text_field( $_POST['llcw_description'] );
 		}
 		if( isset( $_POST['image_url'] ) ) {
-			$settings['image_url'] = $_POST['image_url'];
+			$settings['image_url'] = sanitize_text_field( $_POST['image_url'] );
 		}
 		if( isset( $_POST['logo'] ) ) {
-			$settings['logo'] = $_POST['logo'];
+			$settings['logo'] = sanitize_text_field( $_POST['logo'] );
 		}
 		if( isset( $_POST['llcw_title'] ) ) {
 			$settings['title'] = sanitize_text_field( $_POST['llcw_title'] );
@@ -67,7 +67,7 @@ class Admin_Cookie_Wall {
 			$settings['readmore_text'] = sanitize_text_field( $_POST['llcw_readmore_text'] );
 		}
 		if( isset( $_POST['llcw_tracking_code'] ) ) {
-			$settings['tracking_code'] = $_POST['llcw_tracking_code'];
+			$settings['tracking_code'] = sanitize_text_field( $_POST['llcw_tracking_code'] );
 		}
 		if( isset( $_POST['llcw_blurry_background'] ) ) {
 			$settings['blurry_background'] = '1';
