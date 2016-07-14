@@ -8,13 +8,14 @@ class Public_Cookie_Wall {
 		add_filter( 'll_the_content', array( $this, 'custom_fold' ), 10, 3 );
 
 		$domain = '.'.$_SERVER['SERVER_NAME'];
+		$ll_agree_cookies = ( isset( $_POST['ll_agree_cookies'] ) ) ? $_POST['ll_agree_cookies'] : false;
 
-		if( isset( $_POST['ll_agree_cookies'] ) ) {
+		if( intval( $ll_agree_cookies ) ) {
 
 			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/', $domain );
 
 			if( isset( $_GET['url_redirect'] ) ) {
-				header("Location: " . $_GET['url_redirect']);
+				header("Location: " . esc_url( $_GET['url_redirect'] ) );
 				die();
 			} else {
 				header("Location: /");
@@ -24,22 +25,26 @@ class Public_Cookie_Wall {
 	}
 
 	public function custom_fold( $content, $readmore, $button_txt ) {
-		$content = htmlspecialchars_decode($content);
+		$content 	 = htmlspecialchars_decode($content);
 		$is_readmore = strpos($content,'[read-more]');
-		$exploded = explode( '[read-more]', $content );
+		$exploded 	 = explode( '[read-more]', $content );
 
-		$button = '<form method="POST" id="ll_cookie_form"><input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies" value="'.$button_txt.'" /></form>';
+		// We need to esc user content per variable in this function because we can't do it in the template
+		$button = '<form method="POST" id="ll_cookie_form">
+					<input type="hidden" value="1" name="ll_agree_cookies">
+					<input class="btn-accept" id="agree_with_cookie_terms" type="submit" name="ll_agree_cookies_button" value="' . esc_attr( $button_txt ) . '" />
+				   </form>';
 
-		if(!$is_readmore) {
+		if( ! $is_readmore ) {
 			$content .= $button;
 		}
 
 		if( is_array( $exploded ) && isset( $exploded[1] ) && $is_readmore) {
 			$content = $exploded[0];
 			$content .= $button;
-			$content .= '<a id="expand_description">'. $readmore .'</a>';
+			$content .= '<a id="expand_description">'. esc_html( $readmore ) .'</a>';
 			$content .= '<div id="llcw_read_more">';
-			$content .= $exploded[1];
+			$content .= esc_html( $exploded[1] );
 			$content .= $button;
 			$content .= '</div>';
 		}
