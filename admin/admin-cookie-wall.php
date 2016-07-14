@@ -19,7 +19,10 @@ class Admin_Cookie_Wall {
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
-		$this->check_permissions();
+		if( $this->check_permissions() ){
+			$this->save_settings();
+			add_action( 'admin_init', array($this, 'change_htaccess'));
+		}
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
@@ -32,18 +35,16 @@ class Admin_Cookie_Wall {
 
 	private function check_permissions(){
 		if( ! isset( $_GET['page'] ) || 'll-cookie-wall-settings' !== $_GET['page'] ) {
-			return;
+			return false;
 		}
 
 		// If form is submitted check nonce and save if it passes
 		if ( isset( $_POST['llcw_submit'] ) ) {
 			check_admin_referer( 'llcw_save_settings' );
-			$this->save_settings();
-			return;
+			return true;
 		}
-
-
 	}
+
 	private function save_settings() {
 		$settings = get_option( 'llcw_settings' );
 
@@ -75,8 +76,6 @@ class Admin_Cookie_Wall {
 		}
 
 		update_option( 'llcw_settings', $settings );
-
-		add_action( 'admin_init', array($this, 'change_htaccess'));
 	}
 
 	private function create_htaccess(){
