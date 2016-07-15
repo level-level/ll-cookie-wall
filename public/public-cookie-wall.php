@@ -41,11 +41,11 @@ class Public_Cookie_Wall {
 		}
 
 		if( is_array( $exploded ) && isset( $exploded[1] ) && $is_readmore) {
-			$content = $exploded[0];
+			$content =  wp_kses_post( $exploded[0] );
 			$content .= $button;
 			$content .= '<a id="expand_description">'. esc_html( $readmore ) .'</a>';
 			$content .= '<div id="llcw_read_more">';
-			$content .= esc_html( $exploded[1] );
+			$content .= wp_kses_post( $exploded[1] );
 			$content .= $button;
 			$content .= '</div>';
 		}
