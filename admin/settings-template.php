@@ -79,8 +79,10 @@ $tiny_mce_settings = array(
 <div class="wrap">
 	<h2>Cookie Wall for WordPress</h2>
 
+	<?php $errors = get_settings_errors('ll-cookie-wall'); ?>
+
 		<?php
-		if( !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
+		if( empty( $errors ) && !empty( $htaccess_content ) && !empty( $nginx_content ) ) { ?>
 			<div id="setting-error-settings_updated" class="notice notice-info settings-error is-dismissible" id="llcw_server_settings_popup"><?php
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {

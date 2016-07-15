@@ -5,10 +5,13 @@ class Admin_Cookie_Wall {
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
-		if( $this->check_permissions() ){
-			$this->save_settings();
-			add_action( 'admin_init', array($this, 'change_htaccess'));
+		if( ! $this->check_permissions() ) {
+			return;
 		}
+
+		// Validate and add notices... need to use Settings API from start because if no error we need to save it
+		add_action( 'admin_notices', array( $this, 'validate_settings') );
+
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
@@ -29,7 +32,7 @@ class Admin_Cookie_Wall {
 
 		// If form is submitted check nonce and save if it passes
 		if ( isset( $_POST['llcw_submit'] ) ) {
-			check_admin_referer( 'llcw_save_settings' );
+			check_admin_referer( 'llcw_save_settings' ); // if false it just return false
 			return true;
 		}
 	}
@@ -67,8 +70,78 @@ class Admin_Cookie_Wall {
 			$settings['blurry_background'] = '0';
 		}
 
-		update_option( 'llcw_settings', $settings );
+		return update_option( 'llcw_settings', $settings );
 	}
+
+	/**
+	 * Validate the settings
+	 */
+	public function validate_settings(){
+		$errors = array();
+
+		// Logo url
+		if( isset( $_POST['logo'] ) ) {
+			if( ! ( $error = $this->validate_url( $_POST['logo'] ) ) ){
+				$this->add_error( __( 'The logo url you entered did not appear to be a valid URL. Please enter a valid URL.', 'll-cookie-wall' ), 'logo' );
+				$errors['logo'] = $error;
+			}
+		}
+
+		// WYSIWYG description
+		if( isset( $_POST['llcw_description'] ) ) {
+			if( empty( $_POST['llcw_description'] ) ){
+				$this->add_error( __( 'The Cookies description may not be empty. Please enter description.', 'll-cookie-wall' ), 'llcw_description' );
+			}
+		}
+
+		// Image url
+		if( isset( $_POST['image_url'] ) ) {
+			if( ! ( $error = $this->validate_url( $_POST['image_url'] ) ) ){
+				$this->add_error( __( 'The image url you entered did not appear to be a valid URL. Please enter a valid URL.', 'll-cookie-wall' ), 'image_url' );
+				$errors['image_url'] = $error;
+			}
+		}
+
+		// The button text
+		if( isset( $_POST['llcw_btn_text'] ) ) {
+			if( empty( $_POST['llcw_btn_text'] ) ){
+				$this->add_error( __( 'The Agree button text may not be empty. Please enter a text.', 'll-cookie-wall' ), 'llcw_btn_text' );
+			}
+		}
+
+		// if no errors save, sad to so other changes be reset also, but that's the price of not using the Settings API
+		if( empty( $errors ) ){
+			$this->save_settings();
+			add_action( 'admin_init', array($this, 'change_htaccess'));
+		}
+
+		return $errors;
+
+	}
+
+	/**
+	 * Validate an url
+	 */
+	private function validate_url( $value ){
+		if ( preg_match( '#http(s?)://(.+)#i', $value ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Wrapper to add settings errors
+	 */
+	private function add_error( $error, $key ){
+		if ( ! empty( $error ) ) {
+			add_settings_error( "ll-cookie-wall", $key , $error, 'error' );
+		}
+	}
+
+	/**
+	 * From here on off it's all about create rewrite rules
+	 */
 
 	private function create_htaccess(){
 
