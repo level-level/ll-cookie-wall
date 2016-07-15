@@ -2,9 +2,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Admin_Cookie_Wall {
+
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_cookie_wall_settings_submenu_page' ) );
-		$this->check_permissions();
+		if( ! $this->check_permissions() ) {
+			return;
+		}
+
+		// Validate and add notices... need to use Settings API from start because if no error we need to save it
+		add_action( 'admin_notices', array( $this, 'validate_settings') );
+
 	}
 
 	public function register_cookie_wall_settings_submenu_page() {
@@ -15,31 +22,35 @@ class Admin_Cookie_Wall {
 		include_once( plugin_dir_path( __FILE__ ) . 'settings-template.php' );
 	}
 
+	/**
+	 * Check permission when the form has been submit
+	 */
 	private function check_permissions(){
 		if( ! isset( $_GET['page'] ) || 'll-cookie-wall-settings' !== $_GET['page'] ) {
-			return;
+			return false;
 		}
 
 		// If form is submitted check nonce and save if it passes
 		if ( isset( $_POST['llcw_submit'] ) ) {
-			check_admin_referer( 'llcw_save_settings' );
-			$this->save_settings();
-			return;
+			check_admin_referer( 'llcw_save_settings' ); // if false it just return false
+			return true;
 		}
-
-
 	}
+
+	/**
+	 * Save settings to the options table
+	 */
 	private function save_settings() {
 		$settings = get_option( 'llcw_settings' );
 
 		if( isset( $_POST['llcw_description'] ) ) {
-			$settings['description'] =  $_POST['llcw_description'];
+			$settings['description'] =  sanitize_text_field( $_POST['llcw_description'] );
 		}
 		if( isset( $_POST['image_url'] ) ) {
-			$settings['image_url'] = $_POST['image_url'];
+			$settings['image_url'] = sanitize_text_field( $_POST['image_url'] );
 		}
 		if( isset( $_POST['logo'] ) ) {
-			$settings['logo'] = $_POST['logo'];
+			$settings['logo'] = sanitize_text_field( $_POST['logo'] );
 		}
 		if( isset( $_POST['llcw_title'] ) ) {
 			$settings['title'] = sanitize_text_field( $_POST['llcw_title'] );
@@ -51,7 +62,7 @@ class Admin_Cookie_Wall {
 			$settings['readmore_text'] = sanitize_text_field( $_POST['llcw_readmore_text'] );
 		}
 		if( isset( $_POST['llcw_tracking_code'] ) ) {
-			$settings['tracking_code'] = $_POST['llcw_tracking_code'];
+			$settings['tracking_code'] = sanitize_text_field( $_POST['llcw_tracking_code'] );
 		}
 		if( isset( $_POST['llcw_blurry_background'] ) ) {
 			$settings['blurry_background'] = '1';
@@ -59,10 +70,78 @@ class Admin_Cookie_Wall {
 			$settings['blurry_background'] = '0';
 		}
 
-		update_option( 'llcw_settings', $settings );
-
-		add_action( 'admin_init', array($this, 'change_htaccess'));
+		return update_option( 'llcw_settings', $settings );
 	}
+
+	/**
+	 * Validate the settings
+	 */
+	public function validate_settings(){
+		$errors = array();
+
+		// Logo url
+		if( isset( $_POST['logo'] ) ) {
+			if( ! ( $error = $this->validate_url( $_POST['logo'] ) ) ){
+				$this->add_error( __( 'The logo url you entered did not appear to be a valid URL. Please enter a valid URL.', 'll-cookie-wall' ), 'logo' );
+				$errors['logo'] = $error;
+			}
+		}
+
+		// WYSIWYG description
+		if( isset( $_POST['llcw_description'] ) ) {
+			if( empty( $_POST['llcw_description'] ) ){
+				$this->add_error( __( 'The Cookies description may not be empty. Please enter description.', 'll-cookie-wall' ), 'llcw_description' );
+			}
+		}
+
+		// Image url
+		if( isset( $_POST['image_url'] ) ) {
+			if( ! ( $error = $this->validate_url( $_POST['image_url'] ) ) ){
+				$this->add_error( __( 'The image url you entered did not appear to be a valid URL. Please enter a valid URL.', 'll-cookie-wall' ), 'image_url' );
+				$errors['image_url'] = $error;
+			}
+		}
+
+		// The button text
+		if( isset( $_POST['llcw_btn_text'] ) ) {
+			if( empty( $_POST['llcw_btn_text'] ) ){
+				$this->add_error( __( 'The Agree button text may not be empty. Please enter a text.', 'll-cookie-wall' ), 'llcw_btn_text' );
+			}
+		}
+
+		// if no errors save, sad to so other changes be reset also, but that's the price of not using the Settings API
+		if( empty( $errors ) ){
+			$this->save_settings();
+			add_action( 'admin_init', array($this, 'change_htaccess'));
+		}
+
+		return $errors;
+
+	}
+
+	/**
+	 * Validate an url
+	 */
+	private function validate_url( $value ){
+		if ( preg_match( '#http(s?)://(.+)#i', $value ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Wrapper to add settings errors
+	 */
+	private function add_error( $error, $key ){
+		if ( ! empty( $error ) ) {
+			add_settings_error( "ll-cookie-wall", $key , $error, 'error' );
+		}
+	}
+
+	/**
+	 * From here on off it's all about create rewrite rules
+	 */
 
 	private function create_htaccess(){
 
@@ -73,20 +152,7 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
-		$blocked_agents = array (
-			'Internet\ Explorer',
-			'MSIE',
-			'Chrome',
-			'Safari',
-			'Firefox',
-			'Windows',
-			'Opera',
-			'iphone',
-			'ipad',
-			'android',
-			'blackberry'
-		);
-		$agents = implode('|', $blocked_agents);
+		$agents = implode('|', $this->get_blocked_agents() );
 
 		$new_htaccess = "# BEGIN Cookie Rewrite\n";
 		$new_htaccess .= "<IfModule mod_rewrite.c>\n";
@@ -173,9 +239,11 @@ class Admin_Cookie_Wall {
 			mkdir( $plugin_admin_path . '/config_files' );
 		}
 
+		$agents = implode('|', $this->get_blocked_agents() );
+
 		$content = '
 set $ll_cookie_exist \'0\';
-if ( $http_user_agent ~* \'(Internet\ Explorer|MSIE|Chrome|Safari|Firefox|Windows|Opera|iphone|ipad|android|blackberry)\' ) { 
+if ( $http_user_agent ~* \'(' . $agents . ')\' ) { 
 	set $ll_cookie_exist \'1\';
 }
 if ( $http_cookie ~ "ll_cookie_wall=ll_cookie_wall" ) { 
@@ -194,5 +262,23 @@ if ( $ll_cookie_exist = \'1\' ) { 
 		file_put_contents( $config_path, $content );
 
 		return $content;
+	}
+
+	private function get_blocked_agents(){
+		$blocked_agents = array (
+			'Internet\ Explorer',
+			'MSIE',
+			'Chrome',
+			'Safari',
+			'Firefox',
+			'Windows',
+			'Opera',
+			'iphone',
+			'ipad',
+			'android',
+			'blackberry'
+		);
+
+		return apply_filters( 'llcw_blocked_agents', $blocked_agents );
 	}
 }
