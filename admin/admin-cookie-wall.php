@@ -19,6 +19,9 @@ class Admin_Cookie_Wall {
 		include_once( plugin_dir_path( __FILE__ ) . 'settings-template.php' );
 	}
 
+	/**
+	 * Check permission when the form has been submit
+	 */
 	private function check_permissions(){
 		if( ! isset( $_GET['page'] ) || 'll-cookie-wall-settings' !== $_GET['page'] ) {
 			return false;
@@ -31,6 +34,9 @@ class Admin_Cookie_Wall {
 		}
 	}
 
+	/**
+	 * Save settings to the options table
+	 */
 	private function save_settings() {
 		$settings = get_option( 'llcw_settings' );
 
