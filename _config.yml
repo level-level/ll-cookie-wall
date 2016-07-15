@@ -13,7 +13,7 @@ description:
   continue browsing without cookies, which possibly means loss of income for publishers, this cookie
   wall only accepts a confirmation.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://level-level.github.io" # the base hostname & protocol for your site
+url: "http://cookiewallforwp.com" # the base hostname & protocol for your site
 twitter_username: levellevel
 
 # Build settings
