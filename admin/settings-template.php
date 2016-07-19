@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 include_once( plugin_dir_path( __DIR__ ) . 'includes/functions.php' );
 
-$plugin_text_domain     = 'll_cookie_wall';
-
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
 $nginx_config_path      = $plugin_admin_path . 'config_files/nginx.conf';
 $apache_config_path     = $plugin_admin_path . 'config_files/.htaccess';
@@ -15,9 +13,9 @@ $htaccess_content       = '';
 $nginx_content          = '';
 $description            = '';
 $expiration             = '';
-$title                  = __('Cookie Wall');
-$button_text            = __('I agree');
-$readmore_text          = __('Read more');
+$title                  = __('Cookie Wall', 'll-cookie-wall');
+$button_text            = __('I agree', 'll-cookie-wall');
+$readmore_text          = __('Read more', 'll-cookie-wall');
 $image_url              = '';
 $logo                   = '';
 $tracking_code          = '';
@@ -87,30 +85,29 @@ $tiny_mce_settings = array(
 				if( $server_software == 'apache' ) {
 					if( !empty( $htaccess_content ) ) {
 						?>
-						<h4><?php echo esc_html__( 'You are using an Apache server', $plugin_text_domain ) ?></h4>
+						<h4><?php echo esc_html__( 'You are using an Apache server', 'll-cookie-wall' ) ?></h4>
 						</div><!-- closing the notice box div -->
-						<p class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly.
-					Please add the following snippet to your .htaccess file manually:", $plugin_text_domain ) ?></p>
+						<p class="description"><?php echo esc_html__( "We couldn't update your .htaccess file, but the code is necessary for this plugin to work properly. Please add the following snippet to your .htaccess file manually:", 'll-cookie-wall' ) ?></p>
 						<textarea cols="130" rows="16" ><?php echo $htaccess_content; ?></textarea><?php
 					}
 				} else if( $server_software == 'nginx' ) {
 					if( !empty( $nginx_content ) ) {
 						?>
-						<h4><?php echo esc_html__( 'You are using a Nginx server', $plugin_text_domain ) ?></h4>
+						<h4><?php echo esc_html__( 'You are using a Nginx server', 'll-cookie-wall' ) ?></h4>
 						<p><?php echo esc_html__( "Notice! When deactivating this plugin don't forget to remove the following Nginx rules and reload your Nginx server.
-						WordPress doesn\n't have access to do this automatically.", $plugin_text_domain ) ?></p>
+						WordPress doesn\n't have access to do this automatically.", 'll-cookie-wall' ) ?></p>
 						</div><!-- closing the notice box div -->
-						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly. Please add the following snippet to your Nginx config manually:", $plugin_text_domain ) ?></p>
+						<p class="description"><?php echo esc_html__( "The following code is necessary for this plugin to work properly. Please add the following snippet to your Nginx config manually:", 'll-cookie-wall' ) ?></p>
 						<textarea cols="130" rows="17" ><?php echo $nginx_content; ?></textarea>
 						<?php
 					}
 				} else {
 					if ( ! empty( $htaccess_content ) || ! empty( $nginx_content ) ) {
 						?>
-						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", $plugin_text_domain ) ?></h4>
-						<p class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", $plugin_text_domain ) ?></span>
+						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", 'll-cookie-wall' ) ?></h4>
+						<p class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", 'll-cookie-wall' ) ?></span>
 						<textarea cols="130" rows="16"><?php echo $htaccess_content; ?></textarea>
-						<p class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", $plugin_text_domain ) ?></p>
+						<p class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", 'll-cookie-wall' ) ?></p>
 						</div><!-- closing the notice box div -->
 						<textarea cols="130" rows="15"><?php echo $nginx_content; ?></textarea><?php
 					}

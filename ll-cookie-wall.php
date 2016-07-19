@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class LL_Cookie_Wall {
 	public function __construct() {
-		load_plugin_textdomain( 'll_cookie_wall', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'll-cookie-wall', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		add_action('init', array($this, 'plugin_init'));
 		register_deactivation_hook( __FILE__, array( 'LL_Cookie_Wall', 'plugin_deactivation' ) );
