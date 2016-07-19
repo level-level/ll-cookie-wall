@@ -1,0 +1,133 @@
+/* Mobile first */
+body.ll_cookie_wall {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3A3A3A;
+}
+
+body.ll_cookie_wall main section {
+    position: relative;
+    overflow-y: hidden;
+
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #fff;
+    display: block;
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+body.ll_cookie_wall main section img#logo {
+    max-width: 200px;
+}
+body.ll_cookie_wall main section h1 {
+    margin-bottom: 15px;
+}
+
+body.ll_cookie_wall main section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+body.ll_cookie_wall main section h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+body.ll_cookie_wall main section p {
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+body.ll_cookie_wall main section p:first-child {
+    margin-top: 30px;
+}
+body.ll_cookie_wall main section form {
+    margin: 35px 0 20px 0;
+}
+body.ll_cookie_wall main section form input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    font-weight:300;
+    font-size: 16px;
+    color: #fff;
+    background: green;
+    border: none;
+    padding: 16px 20px;
+    cursor: pointer;
+    margin: 0 auto;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+body.ll_cookie_wall main section form input:hover {
+    background-color: darkgreen;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -ms-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+body.ll_cookie_wall main section a#expand_description {
+    color: #878787;
+    text-align: center;
+    text-decoration: underline;
+    display: block;
+    cursor: pointer;
+}
+body.ll_cookie_wall main section a#expand_description:hover {
+    color: #696969;
+    -webkit-transition: color .3s;
+    -moz-transition: color .3s;
+    -ms-transition: color .3s;
+    -o-transition: color .3s;
+    transition: color .3s;
+}
+
+body.ll_cookie_wall main section #llcw_read_more {
+    display: none;
+}
+
+body.ll_cookie_wall .background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+body.ll_cookie_wall .overlay {
+    background-color: rgba(0,0,0,0.65);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;;
+}
+body.ll_cookie_wall footer {
+    display: none;
+}
+
+/* Tablet */
+@media (min-width: 480px) {
+    body.ll_cookie_wall main section {
+        max-width: 480px;
+        margin: 5% auto;
+        padding: 40px;
+    }
+}
+/* Desktop */
+@media (min-width: 1110px) {
+    body.ll_cookie_wall main section {
+        max-width: 620px;
+    }
+}

@@ -8,6 +8,9 @@ class Public_Cookie_Wall {
 		add_filter( 'll_the_content', array( $this, 'custom_fold' ), 10, 3 );
 		add_filter( 'wp_safe_redirect_fallback', array( $this, 'safe_redirect_fallback') );
 
+		add_action( 'llcw_head', array( $this, 'enqueue_styles' ) );
+		add_action( 'llcw_footer', array( $this, 'enqueue_scripts' ) );
+
 		$domain = '.'.$_SERVER['SERVER_NAME'];
 		$ll_agree_cookies = ( isset( $_POST['ll_agree_cookies'] ) ) ? $_POST['ll_agree_cookies'] : false;
 
@@ -80,4 +83,22 @@ class Public_Cookie_Wall {
 	public function safe_redirect_fallback(){
 		return get_home_url();
 	}
+
+	/**
+	 * Kinds of proper way to enqueue scripts and styles
+	 */
+	function enqueue_styles() {
+		if( apply_filters( 'llcw_enqueue_styles', true ) ) { ?>
+		<link href="<?php echo apply_filters('llcw_stylesheet_url', plugin_dir_url( __DIR__ ) . 'assets/css/style.css' ); ?>" media="all" rel="stylesheet" />
+	<?php
+		} //end if
+	}
+
+	function enqueue_scripts() {
+		if( apply_filters( 'llcw_enqueue_scripts', true ) ) { ?>
+			<script type='text/javascript' src="<?php echo apply_filters('llcw_scripts_url', plugin_dir_url(__DIR__) . 'assets/js/scripts.js'); ?>"></script>
+		<?php
+		} //end if
+	}
+
 }
