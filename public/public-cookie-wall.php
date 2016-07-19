@@ -96,6 +96,7 @@ class Public_Cookie_Wall {
 
 	function enqueue_scripts() {
 		if( apply_filters( 'llcw_enqueue_scripts', true ) ) { ?>
+			<script type='text/javascript' src="<?php echo apply_filters('llcw_scripts_url', includes_url(). 'js/jquery/jquery.js'); ?>"></script>
 			<script type='text/javascript' src="<?php echo apply_filters('llcw_scripts_url', plugin_dir_url(__DIR__) . 'assets/js/scripts.js'); ?>"></script>
 		<?php
 		} //end if
