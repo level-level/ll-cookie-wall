@@ -34,7 +34,6 @@ function parseURLParams(url) {
 (function( $ ) {
 $(document).ready(function() {
 
-    alert('afsaf');
     var parts = location.hostname.split('.');
     var domain = parts.slice(-2).join('.');
     domain = '.'+domain;
