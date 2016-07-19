@@ -58,9 +58,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 			</section>
 		</main>
 		<footer>
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+			<?php do_action('llcw_footer') ; ?>
 			<?php if( !empty( $tracking_code ) ) { ?>
 				<script>
 					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -74,7 +72,6 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 
 				</script>
 			<?php } ?>
-			<?php do_action('llcw_footer') ; ?>
 		</footer>
 	</body>
 </html>
