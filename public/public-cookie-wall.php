@@ -21,7 +21,7 @@ class Public_Cookie_Wall {
 			if( isset( $_GET['url_redirect'] ) ) {
                 $url = $this->recreate_redirect_url( $_GET );
 
-				wp_safe_redirect( $url );
+				wp_safe_redirect( esc_url_raw( $url ) ); //can't escape because that par
 				die();
 			} else {
 				wp_safe_redirect( $this->safe_redirect_fallback() );
