@@ -14,6 +14,15 @@ class Public_Cookie_Wall {
 			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/', $domain );
 
 			if( isset( $_GET['url_redirect'] ) ) {
+				$qs = $_GET;
+
+				unset( $qs['url_redirect'] );
+				$url = $_GET['url_redirect'];
+				// If we have some other remaining query string variables then append is to the string again.
+				// Because url_redirect should be the only query string we have ;)
+				if( !empty($qs) ) {
+					$url = $url . '&' . http_build_query($qs, '&');
+				}
 				header("Location: " . urldecode( $_GET['url_redirect'] ) );
 				die();
 			} else {
