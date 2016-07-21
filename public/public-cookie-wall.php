@@ -19,7 +19,9 @@ class Public_Cookie_Wall {
 			setcookie( "ll_cookie_wall", 'll_cookie_wall', strtotime( '+365 days' ), '/', $domain );
 
 			if( isset( $_GET['url_redirect'] ) ) {
-				wp_safe_redirect( esc_url( $_GET['url_redirect'] ) );
+                $url = $this->recreate_redirect_url( $_GET );
+
+				wp_safe_redirect( esc_url_raw( $url ) ); //can't escape because that par
 				die();
 			} else {
 				wp_safe_redirect( $this->safe_redirect_fallback() );
@@ -27,6 +29,18 @@ class Public_Cookie_Wall {
 			}
 		}
 	}
+
+    public function recreate_redirect_url( $args ){
+
+        $url = $args['url_redirect'];
+        unset( $args['url_redirect'] );
+
+        // If we have some other remaining query string variables then append is to the $url string again.
+        // Because url_redirect should be the only query string we have ;) and these values belong to the redirect string
+        $url = ( !empty( $args ) ) ? add_query_arg( $args, $url) : $url;
+
+        return $url;
+    }
 
 	public function custom_fold( $content, $readmore, $button_txt ) {
 		$content 	 = htmlspecialchars_decode($content);
