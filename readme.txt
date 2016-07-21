@@ -65,8 +65,10 @@ Note when pasting the config rules via your editor, it doesn\'t add weird line-b
 == Changelog ==
 
 = 0.3.0 =
-* Fixed that both server configs use '/cookie-wall'. You may need to update your server config.
+* Correctly redirects url with multiple query args '?foo=bar&you&me'
 * Loading all JS and CSS from the server instead of CDN
+* Fixed that both server configs use '/cookie-wall'. You may need to update your server config.
+* Use correct text-domain
 
 = 0.0.1 =
 * Initial release.
