@@ -211,18 +211,30 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					}
 					return parms;
 				}
+
 				$(document).ready(function() {
 
-					var parts = location.hostname.split('.');
-					var domain = parts.slice(-2).join('.');
-					domain = '.'+domain;
+					// Get querystring from url
+					var search = window.location.search;
 
-					var getvars      = parseURLParams( window.location.href );
-					if( undefined == getvars || undefined == getvars.url_redirect ) {
-						var redirect_url = '/';
-					} else {
-						var redirect_url = encodeURIComponent( getvars.url_redirect[0] );
-					}
+					// Remove primary domain name incl. protocol
+					var href = search.replace( location.origin + '?url_redirect=', '');
+
+					// Remove url_redirect to get the value
+					href = search.replace( '?url_redirect=', '');
+
+//					// Don't double encode the href, so check on / from http:// AND & from foo=bar&you=me
+//					if ( ! (href.indexOf("%2F") > -1) && ! (href.indexOf("%26") > -1) ){
+//						href = encodeURIComponent( href );
+//					}
+//
+//					// Then redirect to the same url BUT with an encode value of url_redirect
+//					// But only of there isn't a querystring locate with `llcw=1`!
+//					var getvars = parseURLParams( window.location.href );
+//					if( undefined == getvars || undefined == getvars.llcw ) {
+//						window.location = '?url_redirect=' + href + '&llcw=1';
+//					}
+
 
 					$("#expand_description").click(function(e) {
 						e.preventDefault();
@@ -230,16 +242,17 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 					});
 
 					$("#ll_cookie_form").submit(function(e){
-						ll_redirect_url();
+						ll_redirect_url(e, href);
 					});
 					$('#agree_with_cookie_terms').click(function(e) {
-						ll_redirect_url();
+						ll_redirect_url(e, href);
 					});
 
-					function ll_redirect_url() {
+					function ll_redirect_url(e, redirect_url ) {
+						cookiedomain = '.' + location.host; // Get the domain name
 						e.preventDefault();
-						$.cookie( 'll_cookie_wall', 'll_cookie_wall', { expires: 365, path: '/', domain: domain } );
-
+						$.cookie( 'll_cookie_wall', 'll_cookie_wall', { expires: 365, path: '/', domain: cookiedomain } );
+						redirect_url = decodeURIComponent(redirect_url);
 						window.location.href = redirect_url;
 					}
 				});
