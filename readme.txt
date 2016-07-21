@@ -45,8 +45,18 @@ The look and feel of the Cookie Wall can be fully adjusted to the look and feel 
 
 Have a question? Make a thread in the support forum and we will get back to you.
 
-**The page '/cookie_wall' returns a 404?**
+**The page '/cookie-wall' returns a 404?**
 You didn't refresh your permalinks.
+
+**The page '/cookie_wall' fails in Nginx?**
+Because it should be '/cookie-wall' since v0.3.0
+
+**I'm getting an Javascript error '$ is not defined'**
+When using Nginx you need to have
+
+'if ($request_uri ~ ^/wp-content ) {
+     set $ll_cookie_exist '0';
+}'
 
 **My server config returns an error**  
 Note when pasting the config rules via your editor, it doesn\'t add weird line-breaks.
@@ -54,5 +64,9 @@ Note when pasting the config rules via your editor, it doesn\'t add weird line-b
 
 == Changelog ==
 
-= 0.1 =
+= 0.3.0 =
+* Fixed that both server configs use '/cookie-wall'. You may need to update your server config.
+* Loading all JS and CSS from the server instead of CDN
+
+= 0.0.1 =
 * Initial release.
