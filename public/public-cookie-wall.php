@@ -30,17 +30,16 @@ class Public_Cookie_Wall {
 		}
 	}
 
-    public function recreate_redirect_url( $get ){
+    public function recreate_redirect_url( $args ){
 
-        $url_redirect = esc_url( $get['url_redirect'] );
-        unset( $get['url_redirect'] );
+        $url = $args['url_redirect'];
+        unset( $args['url_redirect'] );
 
         // If we have some other remaining query string variables then append is to the $url string again.
         // Because url_redirect should be the only query string we have ;) and these values belong to the redirect string
-        $url_query_args = ( ( !empty( $get ) ) ) ? '&' . http_build_query($get, '&') : '';
+        $url = ( !empty( $args ) ) ? add_query_arg( $args, $url) : $url;
 
-
-        return esc_url( $url_redirect ) . $url_query_args;
+        return $url;
     }
 
 	public function custom_fold( $content, $readmore, $button_txt ) {
