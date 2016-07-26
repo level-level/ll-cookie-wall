@@ -64,7 +64,13 @@ Note when pasting the config rules via your editor, it doesn\'t add weird line-b
 
 == Changelog ==
 
+= 0.3.1 =
+* Check if rewrite config files exists
+* Move writing of config files outside the save setting so the config files get save properly
+
 = 0.3.0 =
+Don't use this version. It doens't write the config files correct
+
 * Correctly redirects url with multiple query args '?foo=bar&you&me'
 * Loading all JS and CSS from the server instead of CDN
 * Fixed that both server configs use '/cookie-wall'. You may need to update your server config.
