@@ -11,6 +11,7 @@ class Admin_Cookie_Wall {
 
 		// Validate and add notices... need to use Settings API from start because if no error we need to save it
 		add_action( 'admin_notices', array( $this, 'validate_settings') );
+		add_action( 'admin_init', array($this, 'write_rewrite_rules'));
 
 	}
 
@@ -110,9 +111,9 @@ class Admin_Cookie_Wall {
 		}
 
 		// if no errors save, sad to so other changes be reset also, but that's the price of not using the Settings API
+
 		if( empty( $errors ) ){
 			$this->save_settings();
-			add_action( 'admin_init', array($this, 'change_htaccess'));
 		}
 
 		return $errors;
@@ -186,7 +187,7 @@ class Admin_Cookie_Wall {
 		return $new_htaccess;
 	}
 
-	public function change_htaccess(){
+	public function write_rewrite_rules(){
 		global $wp_filesystem;
 
 		// Add Rewrite
@@ -196,6 +197,7 @@ class Admin_Cookie_Wall {
 		// Get filesystem creds
 
 		$url = wp_nonce_url(admin_url('options-general.php?page=ll-cookie-wall-settings'));
+
 		if ( false === ($creds = request_filesystem_credentials($url, '', false, false, null) ) ) {
 			$_POST['htaccess_content'] = $new_htaccess;
 			$_POST['nginx_content']    = $new_nginx;
