@@ -16,6 +16,8 @@ function llcw_get_server_software(){
 
 
 function llcw_read_config_file( $path ){
-    $content = file_get_contents( $path );
-    return $content;
+    if( file_exists( $path ) ) {
+        return file_get_contents($path);
+    }
+    return '';
 }
