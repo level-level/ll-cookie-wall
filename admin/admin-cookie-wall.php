@@ -261,7 +261,7 @@ if ($request_uri ~ ^/wp-includes) {
     set $ll_cookie_exist \'0\';
 }
 if ( $ll_cookie_exist = \'1\' ) { 
-	return 302 http://$host/cookie-wall?url_redirect=$scheme://$host$request_uri; 
+	return 302 $scheme://$host/cookie-wall?url_redirect=$scheme://$host$request_uri; 
 }';
 
 		file_put_contents( $config_path, $content );
