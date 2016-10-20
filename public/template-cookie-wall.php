@@ -68,6 +68,7 @@ if( !empty( $cookie_wall_options ) && isset( $cookie_wall_options['description']
 
 					ga('create', '<?php echo esc_js( $tracking_code ) ?>', 'auto');
 					ga('set', 'anonymizeIp', true);
+					ga('set', 'displayFeaturesTask', null);
 					ga('send', 'pageview');
 
 				</script>
