@@ -105,7 +105,7 @@ $tiny_mce_settings = array(
 					if ( ! empty( $htaccess_content ) || ! empty( $nginx_content ) ) {
 						?>
 						<h4><?php echo esc_html__( "We couldn't recognize the type of server you are using.", 'll-cookie-wall' ) ?></h4>
-						<p class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", 'll-cookie-wall' ) ?></span>
+						<p class="description"><?php echo esc_html__( "Please add one of the following snippets to your .htaccess (if you're using Apache)", 'll-cookie-wall' ) ?></p>
 						<textarea cols="130" rows="16"><?php echo $htaccess_content; ?></textarea>
 						<p class="description"><?php echo esc_html__( "Or nginx-config (if you're using Nginx)", 'll-cookie-wall' ) ?></p>
 						</div><!-- closing the notice box div -->
