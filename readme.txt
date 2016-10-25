@@ -64,6 +64,12 @@ Note when pasting the config rules via your editor, it doesn\'t add weird line-b
 
 == Changelog ==
 
+= 0.3.3 =
+* Disable Google Analytics Demographics & Interests in cookie wall
+
+= 0.3.2 =
+* Use `$scheme` in Nginx config
+
 = 0.3.1 =
 * Check if rewrite config files exists
 * Move writing of config files outside the save setting so the config files get save properly
