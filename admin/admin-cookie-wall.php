@@ -96,7 +96,7 @@ class Admin_Cookie_Wall {
 		}
 
 		// Image url
-		if( isset( $_POST['image_url'] ) ) {
+		if( isset( $_POST['image_url'] ) && ! empty( $_POST['image_url'] ) ) {
 			if( ! ( $error = $this->validate_url( $_POST['image_url'] ) ) ){
 				$this->add_error( __( 'The image url you entered did not appear to be a valid URL. Please enter a valid URL.', 'll-cookie-wall' ), 'image_url' );
 				$errors['image_url'] = $error;
