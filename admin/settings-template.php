@@ -1,8 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-include_once( plugin_dir_path( __DIR__ ) . 'includes/functions.php' );
-
 $plugin_admin_path      = plugin_dir_path( __FILE__ );
 $nginx_config_path      = $plugin_admin_path . 'config_files/nginx.conf';
 $apache_config_path     = $plugin_admin_path . 'config_files/.htaccess';

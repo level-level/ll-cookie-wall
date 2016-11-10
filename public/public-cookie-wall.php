@@ -71,15 +71,16 @@ class Public_Cookie_Wall {
 	}
 
 	/**
-	 * Check if we are on the custom rewrite rule and load the Cookie Wall template
+	 * Check if we are on the custom rewrite rule and load the Cookie Wall template.
 	 */
-	public function custom_parse_request( &$wp) {
-		if( isset( $wp->request ) ) {
-			if ( strpos( $wp->request, 'cookie-wall' ) !== false || strpos( $wp->request, 'cookie_wall' ) !== false ) {
+	public function custom_parse_request( &$wp ) {
+		if ( isset( $wp->request ) ) {
+			if ( llcw_starts_with( $wp->request, [ 'cookie-wall', 'cookie_wall' ] ) ) {
 				include plugin_dir_path( __FILE__ ) . 'template-cookie-wall.php';
 				exit();
 			}
 		}
+
 		return;
 	}
 
