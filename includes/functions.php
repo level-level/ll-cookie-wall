@@ -21,3 +21,21 @@ function llcw_read_config_file( $path ){
     }
     return '';
 }
+
+/**
+ * Determine if a given string starts with a given substring.
+ *
+ * @param string       $haystack
+ * @param string|array $needles
+ *
+ * @return bool
+ */
+function llcw_starts_with( $haystack, $needles ) {
+	foreach ( (array) $needles as $needle ) {
+		if ( $needle != '' && strpos( $haystack, $needle ) === 0 ) {
+			return true;
+		}
+	}
+
+	return false;
+}
