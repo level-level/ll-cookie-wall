@@ -65,6 +65,7 @@ Note when pasting the config rules via your editor, it doesn\'t add weird line-b
 == Changelog ==
 
 = 0.3.4 =
+* Make sure the url starts with cookie-wall instead of anywhere. Props @stayallive
 * Make sure you can save the settings without a background image. Props @stayallive
 * Fix wrong closing tag on <p> element. Props @stayallive
 * Update readme.txt from previous updates :). You are the best @stayallive ;)
