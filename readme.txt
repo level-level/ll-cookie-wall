@@ -58,14 +58,19 @@ When using Nginx you need to have
      set $ll_cookie_exist '0';
 }'
 
-**My server config returns an error**  
+**My server config returns an error**
 Note when pasting the config rules via your editor, it doesn\'t add weird line-breaks.
 
 
 == Changelog ==
 
+= 0.3.4 =
+* Make sure you can save the settings without a background image. Props @stayallive
+* Fix wrong closing tag on <p> element. Props @stayallive
+* Update readme.txt from previous updates :). You are the best @stayallive ;)
+
 = 0.3.3 =
-* Disable Google Analytics Demographics & Interests in cookie wall
+* Disable Google Analytics Demographics & Interests in cookie wall. Props @stayallive
 
 = 0.3.2 =
 * Use `$scheme` in Nginx config
