@@ -17,6 +17,7 @@ $readmore_text          = __('Read more', 'll-cookie-wall');
 $image_url              = '';
 $logo                   = '';
 $tracking_code          = '';
+$custom_css         		= '';
 $server_software        = '';
 $blurry_background      = '';
 
@@ -59,16 +60,28 @@ if( isset( $cookie_wall_options['logo'] ) ) {
 if( isset( $cookie_wall_options['tracking_code'] ) ) {
 	$tracking_code = $cookie_wall_options['tracking_code'];
 }
+if( isset( $cookie_wall_options['custom_css'] ) ) {
+	$custom_css = $cookie_wall_options['custom_css'];
+}
 if( isset( $cookie_wall_options['blurry_background'] ) ) {
 	$blurry_background = $cookie_wall_options['blurry_background'];
 }
 
 wp_enqueue_script('jquery');
 
-$tiny_mce_settings = array(
-	'text_area_name'=>'extra_content',//name you want for the textarea
+$description_editor_settings = array(
+	'text_area_name'=>'description',
 	'quicktags' => true,
 	'tinymce' => true
+);
+
+$css_editor_settings = array(
+	'text_area_name'=>'custom_css',
+	'quicktags' => false,
+	'media_buttons' => false,
+	'tinymce' => false,
+	'textarea_rows' => 8,
+	'wpautop' => false
 );
 ?>
 

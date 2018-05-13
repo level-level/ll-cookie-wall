@@ -28,7 +28,7 @@
             </th>
             <td>
 
-                <?php wp_editor( $description, 'llcw_description', $tiny_mce_settings ); ?>
+                <?php wp_editor( $description, 'llcw_description', $description_editor_settings ); ?>
                 <br>
                 <span class="description" ><?php echo esc_html__( "By European law, you must inform your visitors about all the cookies you have implemented in your website.", 'll-cookie-wall' ) ?></span>
                 <span class="description" ><?php echo esc_html__( "Extra info can be inserted below a [read-more] tag in the content.", 'll-cookie-wall' ) ?></span>
@@ -58,6 +58,16 @@
                 <input class="regular-text" id="analytics" type="text" placeholder="**-**********" name="llcw_tracking_code" value="<?php echo esc_attr($tracking_code); ?>" />
                 <br>
                 <span class="description" ><?php echo esc_html__( "This will include the Google Analytics tracking code to your cookie-wall (this is allowed if anonimised, which this plugin will do automatically as well).", 'll-cookie-wall' ) ?></span>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <label for="custom_css"><?php echo esc_html__( "Custom CSS", 'll-cookie-wall' ) ?></label>
+            </th>
+            <td>
+                <?php wp_editor( $custom_css, 'llcw_custom_css', $css_editor_settings ); ?>
+                <br>
+                <span class="description" ><?php echo esc_html__( "You can add CSS rules here to customize the look of your cookie-wall.", 'll-cookie-wall' ) ?></span>
             </td>
         </tr>
         <tr>

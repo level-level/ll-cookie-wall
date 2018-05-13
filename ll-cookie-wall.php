@@ -3,7 +3,7 @@
     Plugin Name: Cookie Wall for WordPress
     Plugin URI: http://cookiewallforwp.com
     Description: The Cookie Wall for WordPress is a plugin to comply with the EU law. Instead of offering a way to continue browsing without cookies, which possibly means loss of income for publishers, this cookie wall only accepts a confirmation.
-    Version: 0.3.4
+    Version: 0.3.5
     Author: Level Level
     Author URI: http://level-level.com
     Text Domain: ll-cookie-wall

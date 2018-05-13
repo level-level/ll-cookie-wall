@@ -65,6 +65,9 @@ class Admin_Cookie_Wall {
 		if( isset( $_POST['llcw_tracking_code'] ) ) {
 			$settings['tracking_code'] = sanitize_text_field( $_POST['llcw_tracking_code'] );
 		}
+		if( isset( $_POST['llcw_custom_css'] ) ) {
+			$settings['custom_css'] = sanitize_text_field( $_POST['llcw_custom_css'] );
+		}
 		if( isset( $_POST['llcw_blurry_background'] ) ) {
 			$settings['blurry_background'] = '1';
 		} else {
