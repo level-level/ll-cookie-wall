@@ -62,12 +62,12 @@
         </tr>
         <tr>
             <th scope="row">
-                <label for="custom_css"><?php echo esc_html__( "Custom CSS", 'll-cookie-wall' ) ?></label>
+                <label for="custom_css" aria-describedby="custom_css_description"><?php echo esc_html__( "Custom CSS", 'll-cookie-wall' ) ?></label>
             </th>
             <td>
                 <?php wp_editor( $custom_css, 'llcw_custom_css', $css_editor_settings ); ?>
                 <br>
-                <span class="description" ><?php echo esc_html__( "You can add CSS rules here to customize the look of your cookie-wall.", 'll-cookie-wall' ) ?></span>
+                <span class="description" id="custom_css_description"><?php echo esc_html__( "You can add CSS rules here to customize the look of your cookie-wall.", 'll-cookie-wall' ) ?></span>
             </td>
         </tr>
         <tr>
